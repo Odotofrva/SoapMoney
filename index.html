@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#050505" />
-  <title>SOAP MONEY | OdotNYC (Founder)</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<meta content="#050505" name="theme-color"/>
+<title>SOAP MONEY | OdotNYC (Founder)</title>
+<style>
     :root {
       --bg: #050505;
       --panel: rgba(255, 255, 255, 0.075);
@@ -698,14 +699,19 @@
       overflow: hidden;
     }
 
+    .wallpaper-card .product-visual {
+      height: 340px;
+    }
+
     .wallpaper-visual img.product-image {
       width: 100%;
       height: 100%;
       max-height: none;
-      object-fit: cover;
+      object-fit: contain;
       filter: none;
       mix-blend-mode: normal;
-      transform: scale(1.01);
+      transform: none;
+      padding: 8px;
     }
 
     .wallpaper-switcher {
@@ -1122,7 +1128,7 @@
 
     .returns-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 12px;
       margin-top: 18px;
     }
@@ -1898,6 +1904,60 @@
       object-fit: contain;
     }
 
+    .quick-view-gallery-row {
+      display: grid;
+      grid-template-columns: 44px 1fr 44px;
+      gap: 10px;
+      align-items: center;
+      margin-top: 12px;
+    }
+
+    .quick-view-gallery-nav {
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 999px;
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, opacity .18s ease;
+    }
+
+    .quick-view-gallery-nav:hover { transform: scale(1.05); background: rgba(255,255,255,.15); }
+    .quick-view-gallery-nav:disabled { opacity: .32; cursor: not-allowed; transform: none; }
+
+    .quick-view-thumbs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 2px 8px;
+      scroll-snap-type: x mandatory;
+    }
+
+    .quick-view-thumb {
+      flex: 0 0 82px;
+      height: 82px;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 18px;
+      background: rgba(245,245,243,.94);
+      padding: 4px;
+      cursor: pointer;
+      opacity: .68;
+      scroll-snap-align: center;
+      transition: opacity .18s ease, transform .18s ease, border-color .18s ease;
+    }
+
+    .quick-view-thumb:hover { opacity: 1; transform: translateY(-2px); }
+    .quick-view-thumb.active { opacity: 1; border-color: #fff; box-shadow: 0 10px 24px rgba(255,255,255,.12); }
+
+    .quick-view-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 13px;
+    }
+
     .quick-view-info {
       display: grid;
       gap: 10px;
@@ -2306,6 +2366,102 @@
 
     .toast.show { transform: translate(-50%, 0); }
 
+
+    .world-clock-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 58;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      color: #000;
+      padding: 12px 16px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.48);
+      display: grid;
+      gap: 2px;
+      cursor: pointer;
+      font-family: var(--font);
+      text-align: left;
+      min-width: 168px;
+    }
+
+    .world-clock-fab span {
+      font-size: .63rem;
+      font-weight: 1000;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      opacity: .6;
+    }
+
+    .world-clock-fab strong {
+      font-size: .95rem;
+      letter-spacing: .03em;
+    }
+
+    .world-clock-panel {
+      position: fixed;
+      right: 24px;
+      bottom: 92px;
+      z-index: 59;
+      width: min(300px, calc(100vw - 36px));
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.18), transparent 42%),
+        rgba(5,5,5,.94);
+      color: #fff;
+      box-shadow: 0 30px 90px rgba(0,0,0,.66);
+      backdrop-filter: blur(18px);
+      padding: 16px;
+      transform: translateY(14px) scale(.98);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .world-clock-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .world-clock-panel h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -.04em;
+    }
+
+    .world-time-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .world-time-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 11px 12px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .world-time-row span {
+      color: rgba(255,255,255,.7);
+      font-size: .75rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .world-time-row strong {
+      font-size: 1.05rem;
+    }
+
     .mobile-nav {
       display: none;
       position: fixed;
@@ -2378,6 +2534,277 @@
     .hat-switcher .view-toggle {
       padding: 8px 6px;
       font-size: .66rem;
+    }
+
+    .tape-switcher {
+      grid-template-columns: repeat(4, 1fr);
+      border-radius: 22px;
+    }
+
+    .tape-switcher .view-toggle {
+      padding: 8px 6px;
+      font-size: .66rem;
+    }
+
+    .tape-player-layout {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .tape-deck,
+    .tape-selector-panel {
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+      background:
+        radial-gradient(circle at 16% 10%, rgba(255,255,255,.14), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tape-deck::before,
+    .tape-selector-panel::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.05), transparent);
+      transform: translateX(-100%);
+      animation: slowScan 6.5s ease-in-out infinite;
+    }
+
+    .tape-deck > *,
+    .tape-selector-panel > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .tape-deck-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .tape-deck-head strong {
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-size: .78rem;
+    }
+
+    .tape-deck-window {
+      min-height: 360px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.12);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 12%, rgba(255,255,255,.18), transparent 35%),
+        #030303;
+      display: grid;
+      place-items: center;
+    }
+
+    .tape-deck-window img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .tape-display {
+      display: grid;
+      gap: 6px;
+      margin-top: 18px;
+      margin-bottom: 16px;
+    }
+
+    .tape-display span {
+      color: rgba(255,255,255,.62);
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      font-size: .7rem;
+      font-weight: 950;
+    }
+
+    .tape-display h3 {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: .88;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+
+    .tape-display p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .tape-progress-shell {
+      width: 100%;
+      height: 12px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,.12);
+      margin-bottom: 12px;
+    }
+
+    .tape-progress-bar {
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, rgba(255,255,255,.28), #fff);
+      transition: width .22s ease;
+    }
+
+    .tape-status-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: .82rem;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .tape-status-row strong {
+      color: #fff;
+      letter-spacing: .06em;
+    }
+
+    .tape-controls {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .tape-control {
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      min-height: 50px;
+      font: inherit;
+      font-weight: 1000;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, color .18s ease, border-color .18s ease;
+    }
+
+    .tape-control:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .tape-control.primary {
+      background: #fff;
+      color: #000;
+    }
+
+    .tape-selector-panel h3 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: .88;
+      letter-spacing: -.06em;
+      text-transform: uppercase;
+    }
+
+    .tape-selector-panel p {
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .tape-select-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tape-select {
+      text-align: left;
+      border: 1px solid rgba(255,255,255,.14);
+      border-radius: 22px;
+      background: rgba(0,0,0,.30);
+      color: #fff;
+      padding: 14px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+    }
+
+    .tape-select:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.28);
+      background: rgba(255,255,255,.08);
+    }
+
+    .tape-select strong {
+      display: block;
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 6px;
+    }
+
+    .tape-select span {
+      display: block;
+      color: var(--muted);
+      font-size: .84rem;
+      line-height: 1.38;
+    }
+
+    .tape-select.active {
+      background: #fff;
+      color: #000;
+      border-color: #fff;
+      box-shadow: 0 14px 30px rgba(255,255,255,.12);
+    }
+
+    .tape-select.active span {
+      color: rgba(0,0,0,.65);
+    }
+
+    .tape-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tape-meta-card {
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 22px;
+      padding: 14px;
+      background: rgba(255,255,255,.055);
+      min-height: 108px;
+    }
+
+    .tape-meta-card strong {
+      display: block;
+      font-size: .74rem;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .tape-meta-card span {
+      display: block;
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.42;
+    }
+
+    .tape-note {
+      margin-top: 16px;
+      color: rgba(255,255,255,.58) !important;
+      font-size: .84rem;
     }
 
     .film-grid {
@@ -2548,6 +2975,7 @@
       .product-grid { grid-template-columns: repeat(2, 1fr); }
       .feature-band { grid-template-columns: 1fr; }
       .film-grid { grid-template-columns: 1fr; }
+      .tape-player-layout { grid-template-columns: 1fr; }
       .mannequin-lab { grid-template-columns: 1fr; }
       .mannequin-stage, .fit-controls { min-height: auto; }
       .signup { grid-template-columns: 1fr; }
@@ -2592,7 +3020,103 @@
       .checkout-price { grid-column: 2; }
       .checkout-item-photo { width: 78px; height: 78px; }
       .checkout-head, .checkout-body { padding-left: 16px; padding-right: 16px; }
-      .mobile-nav { display: grid; grid-template-columns: repeat(6, 1fr); }
+  
+    .world-clock-fab {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 58;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      background: rgba(255,255,255,.94);
+      color: #000;
+      padding: 12px 16px;
+      box-shadow: 0 22px 70px rgba(0,0,0,.48);
+      display: grid;
+      gap: 2px;
+      cursor: pointer;
+      font-family: var(--font);
+      text-align: left;
+      min-width: 168px;
+    }
+
+    .world-clock-fab span {
+      font-size: .63rem;
+      font-weight: 1000;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+      opacity: .6;
+    }
+
+    .world-clock-fab strong {
+      font-size: .95rem;
+      letter-spacing: .03em;
+    }
+
+    .world-clock-panel {
+      position: fixed;
+      right: 24px;
+      bottom: 92px;
+      z-index: 59;
+      width: min(300px, calc(100vw - 36px));
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255,255,255,.18), transparent 42%),
+        rgba(5,5,5,.94);
+      color: #fff;
+      box-shadow: 0 30px 90px rgba(0,0,0,.66);
+      backdrop-filter: blur(18px);
+      padding: 16px;
+      transform: translateY(14px) scale(.98);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .world-clock-panel.open {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0) scale(1);
+    }
+
+    .world-clock-panel h3 {
+      margin: 0 0 12px;
+      font-size: 1.35rem;
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: -.04em;
+    }
+
+    .world-time-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .world-time-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 11px 12px;
+      background: rgba(255,255,255,.06);
+    }
+
+    .world-time-row span {
+      color: rgba(255,255,255,.7);
+      font-size: .75rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .world-time-row strong {
+      font-size: 1.05rem;
+    }
+
+    .mobile-nav { display: grid; grid-template-columns: repeat(6, 1fr); }
     }
 
 
@@ -2622,6 +3146,13 @@
         padding: 12px 0 0;
         background: linear-gradient(180deg, transparent, rgba(4,4,4,.95) 42%);
       }
+      .quick-view-gallery-row { grid-template-columns: 38px 1fr 38px; }
+      .quick-view-gallery-nav { width: 38px; height: 38px; }
+      .quick-view-thumb { flex-basis: 74px; height: 74px; }
+      .tape-switcher { grid-template-columns: repeat(2, 1fr); }
+      .tape-select-grid, .tape-meta-grid { grid-template-columns: 1fr; }
+      .world-clock-fab { right: 14px; bottom: 94px; min-width: 154px; padding: 11px 14px; }
+      .world-clock-panel { right: 14px; bottom: 160px; }
       .contact-panel {
         grid-template-columns: 1fr;
         padding: 18px;
@@ -2640,460 +3171,517 @@
   </style>
 </head>
 <body>
-  <div class="site-shell">
-    <main class="app-frame" id="top">
-      <div class="bubbles" aria-hidden="true">
-        <span class="bubble" style="--left:8%;--size:34px;--time:16s;--opacity:.35"></span>
-        <span class="bubble" style="--left:18%;--size:18px;--time:12s;--opacity:.25"></span>
-        <span class="bubble" style="--left:41%;--size:46px;--time:22s;--opacity:.18"></span>
-        <span class="bubble" style="--left:67%;--size:24px;--time:14s;--opacity:.32"></span>
-        <span class="bubble" style="--left:83%;--size:58px;--time:24s;--opacity:.14"></span>
-      </div>
-
-      <header class="topbar">
-        <a class="brand-lockup" href="#top" aria-label="SOAP MONEY home">
-          <span class="app-icon"><img src="assets/soap-money-sm-logo.png" alt="SOAP MONEY SM logo"></span>
-          <span class="brand-name"><strong>SOAP MONEY</strong><span>Future Wash Goods</span></span>
-        </a>
-        <nav class="nav-actions" aria-label="Primary navigation">
-          <a class="pill" href="#shop">Shop</a>
-          <a class="pill" href="#official-bar">Soap Bar</a>
-          <a class="pill" href="#film">Short Film</a>
-          <a class="pill" href="#wash-dry-fold">Wash / Dry / Fold</a>
-          <a class="pill" href="#returns">Final Sale</a>
-          <a class="pill" href="#contact">Contact</a>
-          <button class="pill" id="modeToggle" type="button">Wash Mode</button>
-          <button class="pill cart-pill" id="cartButton" type="button" aria-label="Open checkout cart">0</button>
-        </nav>
-      </header>
-
-      <section class="hero">
-        <div class="hero-copy">
-     
-          <h1>Clean goods. Dirty ambition.</h1>
-          <p>SOAP MONEY combines the laundromat into a futuristic streetwear terminal. Load up heavyweight tees, trucker hats, the premium Laundry Card, limited art driven drops, free HD wallpapers, the future official Soap Money bar of soap, and now a branded short film moment that extends the world of Soap Money beyond the product drop.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="#shop">Start The Drop</a>
-            <a class="btn btn-secondary" href="#official-bar">Preview The Soap Bar</a>
-            <a class="btn btn-secondary" href="#film">View The Film</a>
-            <button class="btn btn-secondary" type="button" data-open-checkout>Open Checkout</button>
-            <a class="btn btn-secondary" href="#join">Join The Waitlist</a>
-          </div>
-          <div class="stats-strip" aria-label="Brand highlights">
-            <div class="stat"><strong>300 GSM+</strong><span>Premium tee weight</span></div>
-            <div class="stat"><strong>24/7</strong><span>Laundromat mood</span></div>
-            <div class="stat"><strong>SM Bar</strong><span>Future soap release</span></div>
-          </div>
-        </div>
-
-        <div class="phone-wrap" aria-label="Mobile app preview">
-          <div class="phone">
-            <div class="screen">
-              <div class="app-content">
-                <div class="mini-head"><span>WASH / DRY / FOLD OS</span><span id="clock">12:00</span></div>
-                <div class="washer-card">
-                  <img src="assets/soap-money-wordmark.png" alt="SOAP MONEY wordmark logo">
-                  <h2>Drop Cycle Active</h2>
-                  
-                  <div class="progress-shell"><div class="progress-bar"></div></div>
-                </div>
-                <div class="quick-cycles">
-                  <div class="cycle"><span>Wash</span><strong>Pick The Drop</strong></div>
-                  <div class="cycle"><span>Dry</span><strong>Lock The Fit</strong></div>
-                  <div class="cycle"><span>Fold</span><strong>Review Cart</strong></div>
-                  <div class="cycle"><span>Spin</span><strong>Final Sale</strong></div>
-                </div>
-                <div class="app-bottom">
-                  <span class="tab active"><i></i>Wash</span>
-                  <span class="tab"><i></i>Dry</span>
-                  <span class="tab"><i></i>Fold</span>
-                  <span class="tab"><i></i>Cart</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <div class="ticker" aria-hidden="true">
-        <div class="ticker-track">
-          <span>SOAP MONEY GOODS</span><span>FUTURE LAUNDROMAT</span><span>HEAVY GSM</span><span>FREE HD WALLPAPERS</span><span>OFFICIAL SOAP BAR COMING SOON</span><span>LAUNDRY CARD ACCESS</span><span>BLACK / WHITE UNIFORM</span><span>SOAP CARD LIMITED</span><span>FINAL SALE</span><span>DROP CYCLE LIVE</span>
-          <span>SOAP MONEY GOODS</span><span>FUTURE LAUNDROMAT</span><span>HEAVY GSM</span><span>FREE HD WALLPAPERS</span><span>OFFICIAL SOAP BAR COMING SOON</span><span>LAUNDRY CARD ACCESS</span><span>BLACK / WHITE UNIFORM</span><span>SOAP CARD LIMITED</span><span>FINAL SALE</span><span>DROP CYCLE LIVE</span>
-        </div>
-      </div>
-
-
-
-      <section id="wash-dry-fold" class="wash-flow-section reveal">
-        <div class="section-head">
-          <h2>Wash. Dry. Fold.</h2>
-         
-        </div>
-        <div class="wash-flow-grid" aria-label="Wash Dry Fold shopping flow">
-          <article class="flow-card wash-step">
-            <span class="flow-number">01</span>
-            <h3>Wash</h3>
-            <p>Browse the product cycles: Soap Money Tees, Soap Card limited edition, Laundry Card, Trucker Hat, the free SOAP MONEY Wallpapers pack, and the future official Soap Money bar preview.</p>
-          </article>
-          <article class="flow-card dry-step">
-            <span class="flow-number">02</span>
-            <h3>Dry</h3>
-            <p>Tap front/back views, choose tee size S - 2XL, and let the washer/dryer micro-sounds confirm each move.</p>
-          </article>
-          <article class="flow-card fold-step">
-            <span class="flow-number">03</span>
-            <h3>Fold</h3>
-            <p>Open the popup checkout to review item photos, sizes, views, prices, subtotal, and final-sale policy. Digital wallpapers download instantly for $0.00, while the official bar of soap is marked as a future release for waitlist interest.</p>
-            <button class="flow-checkout-btn" type="button" data-open-checkout>Open Checkout</button>
-          </article>
-        </div>
-      </section>
-
-      <section id="official-bar" class="official-bar-section reveal">
-        <div class="section-head">
-          <h2>Official bar of soap</h2>
-          <p>The future SOAP MONEY product: a bold natural bar built to connect the laundry culture, streetwear mindset, and clean daily ritual.</p>
-        </div>
-        <div class="official-bar-panel">
-          <div class="official-bar-art">
-            <img src="assets/soap-money-official-bar-ingredients.webp" alt="SOAP MONEY official natural bar of soap ingredients preview with olive oil, coconut oil, shea butter, aloe vera, activated charcoal, and oatmeal">
-          </div>
-          <div class="official-bar-copy">
-            <div>
-              <span class="official-bar-kicker">Future Release / Natural Bar</span>
-              <h2>Soap Money</h2>
-              <p><strong>SOAP MONEY Official Bar of Soap</strong> is the next evolution of the brand: a real-use product with the same black-and-white, futuristic laundromat energy as the apparel and wallpapers. This bar is being built for a clean daily ritual, strong shelf presence, and a premium streetwear-style product experience.</p>
-              <div class="ingredient-cloud" aria-label="Planned ingredient highlights">
-                <span>Olive Oil</span>
-                <span>Coconut Oil</span>
-                <span>Shea Butter</span>
-                <span>Aloe Vera</span>
-                <span>Activated Charcoal</span>
-                <span>Oatmeal</span>
-              </div>
-              <div class="official-bar-specs">
-                <div class="official-bar-spec"><strong>Clean Identity</strong><span>Designed as a premium bar with an embossed SM mark and dark minimal brand look.</span></div>
-                <div class="official-bar-spec"><strong>Future Drop</strong><span>Not available for checkout yet. This section builds interest before the first product rollout.</span></div>
-                <div class="official-bar-spec"><strong>Brand Fit</strong><span>Matches the Soap Money world: laundry culture, streetwear mindset, minimal, bold, clean.</span></div>
-                <div class="official-bar-spec"><strong>Launch Path</strong><span>Use the waitlist to collect early interest for samples, first release, and restock alerts.</span></div>
-              </div>
-            </div>
-            <div>
-              <div class="official-bar-actions">
-                <span class="coming-soon-price">Coming Soon</span>
-                <a class="btn btn-primary" href="#join">Join The Soap Bar Waitlist</a>
-                <a class="btn btn-secondary" href="#contact">Ask About The Bar</a>
-              </div>
-              <p class="official-bar-note">Preview section only. Pricing, final ingredients, packaging, and release date can be updated when the first production run is ready.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-
-      <section id="shop">
-        <div class="section-head">
-          <h2>Product cycles</h2>
-          <p>The wash cycle is loaded with priced goods, free digital drops, and future product previews: heavyweight Soap Money Tees, the Soap Money Laundry Card, the one-size Trucker Hat with lifestyle photography, the limited edition Soap Card tee, HD SOAP MONEY Wallpapers for iPhone and Android, the coming SOAP MONEY official bar of soap, and a dedicated short film viewing section.</p>
-        </div>
-        <div class="product-grid">
-          <article class="product-card featured-product reveal" data-product-card>
-            <div class="product-visual product-photo">
-              <span class="view-label" data-view-label="teeView">Front View</span>
-              <img id="teeView" class="product-image" src="assets/product-heavy-gsm-tee-front.webp" alt="Soap Money Tees black heavy GSM tee front with small chest logo">
-            </div>
-            <div class="product-switcher" role="group" aria-label="Soap Money Tees view toggle">
-              <button type="button" class="view-toggle active" aria-pressed="true" data-target="teeView" data-label="Front View" data-src="assets/product-heavy-gsm-tee-front.webp" data-alt="Soap Money Tees black heavy GSM tee front with small chest logo">Front</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="teeView" data-label="Back View" data-src="assets/product-heavy-gsm-tee-back.webp" data-alt="Soap Money Tees black heavy GSM tee back with large SM logo">Back</button>
-            </div>
-            <div class="product-badge-row"><small>Cycle 01</small><span class="wash-status">Sizes S - 2XL</span></div>
-            <h3>Soap Money Tees</h3>
-            <p>Heavyweight 300+ GSM black tee with a premium structured feel. Men get a boxy streetwear fit; women get a relaxed oversized fit with clean drape.</p>
-            <div class="size-options" aria-label="Soap Money Tees size selector">
-              <button type="button" class="size-chip active" data-size="S">S</button>
-              <button type="button" class="size-chip" data-size="M">M</button>
-              <button type="button" class="size-chip" data-size="L">L</button>
-              <button type="button" class="size-chip" data-size="XL">XL</button>
-              <button type="button" class="size-chip" data-size="2XL">2XL</button>
-            </div>
-            <div class="card-footer"><span class="price">$50</span><button class="add-btn" data-item="Soap Money Tees" data-price="50" data-default-image="assets/product-heavy-gsm-tee-front.webp">Add</button></div>
-          </article>
-
-          <article class="product-card featured-product reveal" data-product-card>
-            <div class="product-visual product-photo">
-              <span class="view-label" data-view-label="soapCardView">Front View</span>
-              <img id="soapCardView" class="product-image" src="assets/product-soap-card-front.webp" alt="Soap Card limited edition black tee front with Soap Money chest logo">
-            </div>
-            <div class="product-switcher" role="group" aria-label="Soap Card view toggle">
-              <button type="button" class="view-toggle active" aria-pressed="true" data-target="soapCardView" data-label="Front View" data-src="assets/product-soap-card-front.webp" data-alt="Soap Card limited edition black tee front with Soap Money chest logo">Front</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="soapCardView" data-label="Back View" data-src="assets/product-soap-card-back.webp" data-alt="Soap Card limited edition black tee back with hand holding Soap Money Laundry Card graphic">Back</button>
-            </div>
-            <div class="product-badge-row"><small>Limited Edition</small><span class="wash-status">Soap Card</span></div>
-            <h3>Soap Card</h3>
-            <p>Limited edition heavyweight tee with the clean Soap Money chest hit on the front and the oversized hand-held Laundry Card artwork on the back.</p>
-            <div class="size-options" aria-label="Soap Card size selector">
-              <button type="button" class="size-chip active" data-size="S">S</button>
-              <button type="button" class="size-chip" data-size="M">M</button>
-              <button type="button" class="size-chip" data-size="L">L</button>
-              <button type="button" class="size-chip" data-size="XL">XL</button>
-              <button type="button" class="size-chip" data-size="2XL">2XL</button>
-            </div>
-            <div class="card-footer"><span class="price">$150</span><button class="add-btn" data-item="Soap Card" data-price="150" data-default-image="assets/product-soap-card-front.webp">Add</button></div>
-          </article>
-
-          <article class="product-card featured-product reveal" data-product-card>
-            <div class="product-visual product-photo">
-              <span class="view-label" data-view-label="cardView">Front View</span>
-              <img id="cardView" class="product-image" src="assets/product-laundry-card-front.webp" alt="Soap Money Laundry Card white card front">
-            </div>
-            <div class="product-switcher" role="group" aria-label="Soap Money Laundry Card view toggle">
-              <button type="button" class="view-toggle active" aria-pressed="true" data-target="cardView" data-label="Front View" data-src="assets/product-laundry-card-front.webp" data-alt="Soap Money Laundry Card white card front">Front</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="cardView" data-label="Back View" data-src="assets/product-laundry-card-back.webp" data-alt="Soap Money Laundry Card white QR card back">Back</button>
-            </div>
-            <div class="product-badge-row"><small>Cycle 02</small><span class="wash-status">Tap + Scan</span></div>
-            <h3>Soap Money Laundry Card</h3>
-            <p>Premium card-style brand piece with a clean front, QR-ready back, and futuristic laundromat access energy.</p>
-            <div class="card-footer"><span class="price">$100</span><button class="add-btn" data-item="Soap Money Laundry Card" data-price="100" data-default-image="assets/product-laundry-card-front.webp">Add</button></div>
-          </article>
-
-          <article class="product-card featured-product reveal" data-product-card>
-            <div class="product-visual product-photo">
-              <span class="view-label" data-view-label="hatView">Worn View</span>
-              <img id="hatView" class="product-image" src="assets/soap-money-trucker-hat-worn.webp" alt="Founder wearing the Soap Money trucker hat outdoors">
-            </div>
-            <div class="product-switcher hat-switcher" role="group" aria-label="Soap Money Trucker Hat view toggle">
-              <button type="button" class="view-toggle active" aria-pressed="true" data-target="hatView" data-label="Worn View" data-src="assets/soap-money-trucker-hat-worn.webp" data-alt="Founder wearing the Soap Money trucker hat outdoors">Worn</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="hatView" data-label="In-Hand View" data-src="assets/soap-money-trucker-hat-in-hand.webp" data-alt="Hand holding the Soap Money trucker hat under an overpass">In Hand</button>
-            </div>
-            <div class="product-badge-row"><small>Cycle 03</small><span class="wash-status">One Size</span></div>
-            <h3>Soap Money Trucker Hat</h3>
-            <p>One-size adjustable black mesh trucker hat with a crisp embroidered Soap Money front hit, now shown in studio, worn on-body, and held in-hand so customers can see the fit and lifestyle feel.</p>
-            <div class="card-footer"><span class="price">$50</span><button class="add-btn" data-item="Soap Money Trucker Hat" data-price="50" data-default-image="assets/soap-money-trucker-hat-worn.webp">Add</button></div>
-          </article>
-
-          <article class="product-card featured-product wallpaper-card reveal" data-product-card>
-            <div class="product-visual product-photo wallpaper-visual">
-              <span class="view-label" data-view-label="wallpaperView">Wallpaper 04</span>
-              <img id="wallpaperView" class="product-image" src="assets/soap-money-wallpaper-04-raining-soap-bars-hd.jpg" alt="SOAP MONEY raining soap bars dark lock screen wallpaper">
-            </div>
-            <div class="product-switcher wallpaper-switcher" role="group" aria-label="SOAP MONEY Wallpapers preview selector">
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="wallpaperView" data-label="Wallpaper 01" data-src="assets/soap-money-wallpaper-01-laundromat-silhouette-hd.jpg" data-alt="SOAP MONEY cinematic laundromat lock screen wallpaper">01</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="wallpaperView" data-label="Wallpaper 02" data-src="assets/soap-money-wallpaper-02-black-soap-hand-hd.jpg" data-alt="SOAP MONEY black bar of soap held in hand wallpaper">02</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="wallpaperView" data-label="Wallpaper 03" data-src="assets/soap-money-wallpaper-03-soap-closeup-hd.jpg" data-alt="SOAP MONEY black soap close-up hand wallpaper">03</button>
-              <button type="button" class="view-toggle active" aria-pressed="true" data-target="wallpaperView" data-label="Wallpaper 04" data-src="assets/soap-money-wallpaper-04-raining-soap-bars-hd.jpg" data-alt="SOAP MONEY raining soap bars dark lock screen wallpaper">04</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="wallpaperView" data-label="Wallpaper 05" data-src="assets/soap-money-wallpaper-05-logo-silhouette-hd.jpg" data-alt="SOAP MONEY logo silhouette dark wallpaper">05</button>
-              <button type="button" class="view-toggle" aria-pressed="false" data-target="wallpaperView" data-label="Wallpaper 06" data-src="assets/soap-money-wallpaper-06-sm-logo-bubbles-hd.jpg" data-alt="SOAP MONEY SM logo bubbles dark wallpaper">06</button>
-            </div>
-            <div class="product-badge-row"><small>Free Download</small><span class="wash-status">HD iPhone + Android</span></div>
-            <h3>SOAP MONEY Wallpapers</h3>
-            <p>Free HD portrait wallpaper pack built for the SOAP MONEY black-and-white laundromat universe. Includes cinematic soap bars, SM logo lock screens, bubble textures, and dark brand visuals optimized for iPhone and Android home screens or lock screens.</p>
-            <div class="card-footer"><span class="price free-price">$0.00</span><a class="add-btn download-btn" href="assets/soap-money-wallpapers-hd.zip" download="soap-money-wallpapers-hd.zip" data-item="SOAP MONEY Wallpapers" data-price="0" data-default-image="assets/soap-money-wallpaper-04-raining-soap-bars-hd.jpg" data-direct-download="true">Download</a></div>
-          </article>
-        </div>
-      </section>
-
-
-      <section id="film" class="reveal">
-        <div class="section-head">
-          <h2>Short film</h2>
-          <p>A dedicated section to spotlight the SOAP MONEY short film. It includes a cover display and a ready-made viewer area that can later connect to your MP4 upload or YouTube/Vimeo embed.</p>
-        </div>
-        <div class="film-grid">
-          <article class="film-cover-card">
-            <span class="contact-kicker">Official Cover</span>
-            <h3>SOAP MONEY</h3>
-            
-            <div class="film-cover-frame">
-              <img src="assets/soap-money-short-film-cover.webp" alt="SOAP MONEY short film cover art">
-            </div>
-            <div class="film-meta-row">
-              <span>Film Poster</span>
-              <span>Campaign Cover</span>
-              <span>Streetwear Cinema</span>
-            </div>
-          </article>
-
-          <article class="film-player-card">
-            <span class="contact-kicker">Soap Money - Episode 01</span>
-            <h3>Watch Soap Money</h3>
-           
-            <div class="film-player-shell" role="img" aria-label="SOAP MONEY short film viewing area showing the film cover as a poster placeholder">
-              <img src="assets/soap-money-short-film-cover.webp" alt="">
-              <button class="film-play-badge" type="button" data-film-placeholder aria-label="Preview short film section">▶</button>
-              <div class="film-player-copy">
-                <strong>SOAP MONEY — Short Film Trailer</strong>
-                
-              </div>
-            </div>
-            <div class="cta-row">
-              <a class="btn btn-primary" href="#contact">Ask About The Film</a>
-              <a class="btn btn-secondary" href="#shop">Shop The Hat</a>
-            </div>
-          </article>
-        </div>
-      </section>
-
-
-      <section id="returns" class="reveal">
-        <div class="section-head">
-          <h2>Final Sale Policy</h2>
-          <p>No returns. No exchanges. Every SOAP MONEY purchase is final, so check your size, product view, and cart before checkout.</p>
-        </div>
-        <div class="returns-panel">
-          <div class="returns-grid">
-            <article class="policy-card">
-              <strong>All purchases final</strong>
-              <p>SOAP MONEY products are made for limited drops and in house customization. Once an order is placed, the sale is final.</p>
-            </article>
-            <article class="policy-card">
-              <strong>No returns</strong>
-              <p>We do not accept returns after purchase. Please review the product name, price, tee size, and view toggle before checking out.</p>
-            </article>
-            <article class="policy-card">
-              <strong>No exchanges</strong>
-              <p>Soap Money Tees and Soap Card tees run S - 2XL. Choose carefully because size swaps and exchanges are not available.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-
-      <section id="contact" class="reveal">
-        <div class="section-head">
-          <h2>Contact The Counter</h2>
-          <p>Questions about a drop, sizing, pickup, collabs, or bulk orders? Send it through the SOAP MONEY counter.</p>
-        </div>
-        <div class="contact-panel">
-          <div class="contact-copy">
-            <span class="contact-kicker">SOAP MONEY SERVICE WINDOW</span>
-            <h3>Tap in before the next cycle.</h3>
-            <p>Fill out our form with any questions or concerns. - Soap Money</p>
-            <div class="contact-chips" aria-label="Contact reasons">
-              <span>Product Questions</span>
-              <span>Bulk Orders</span>
-              <span>Collabs</span>
-              <span>Pickup Info</span>
-            </div>
-          </div>
-          <form class="contact-form" id="contactForm">
-            <label>
+<div class="site-shell">
+<main class="app-frame" id="top">
+<div aria-hidden="true" class="bubbles">
+<span class="bubble" style="--left:8%;--size:34px;--time:16s;--opacity:.35"></span>
+<span class="bubble" style="--left:18%;--size:18px;--time:12s;--opacity:.25"></span>
+<span class="bubble" style="--left:41%;--size:46px;--time:22s;--opacity:.18"></span>
+<span class="bubble" style="--left:67%;--size:24px;--time:14s;--opacity:.32"></span>
+<span class="bubble" style="--left:83%;--size:58px;--time:24s;--opacity:.14"></span>
+</div>
+<header class="topbar">
+<a aria-label="SOAP MONEY home" class="brand-lockup" href="#top">
+<span class="app-icon"><img alt="SOAP MONEY SM logo" src="assets/soap-money-sm-logo.png"/></span>
+<span class="brand-name"><strong>SOAP MONEY</strong><span>Luxury Washwear House</span></span>
+</a>
+<nav aria-label="Primary navigation" class="nav-actions">
+<a class="pill" href="#shop">Shop</a>
+<a class="pill" href="#official-bar">Soap Bar</a>
+<a class="pill" href="#film">Short Film</a>
+<a class="pill" href="#wash-dry-fold">Wash / Dry / Fold</a>
+<a class="pill" href="#returns">Final Sale</a>
+<a class="pill" href="#contact">Contact</a>
+<button class="pill" id="modeToggle" type="button">Wash Mode</button>
+<button aria-label="Open checkout cart" class="pill cart-pill" id="cartButton" type="button">0</button>
+</nav>
+</header>
+<section class="hero">
+<div class="hero-copy">
+<h1>Clean luxury. Street ambition.</h1>
+<p>SOAP MONEY is a luxury streetwear wash house built from laundromat culture, premium blanks, clean graphics, and limited digital drops. Load up heavyweight tees, embroidered trucker hats, the premium Laundry Card, HD wallpapers, the future official bar of soap, and the new LaundryTape audio series hosted by OdotNYC.</p>
+<div class="cta-row">
+<a class="btn btn-primary" href="#shop">Start The Drop</a>
+<a class="btn btn-secondary" href="#official-bar">Preview The Soap Bar</a>
+<a class="btn btn-secondary" href="#film">View The Film</a>
+<button class="btn btn-secondary" data-open-checkout="" type="button">Open Checkout</button>
+<a class="btn btn-secondary" href="#join">Join The Waitlist</a>
+</div>
+<div aria-label="Brand highlights" class="stats-strip">
+<div class="stat"><strong>300 GSM+</strong><span>Premium tee weight</span></div>
+<div class="stat"><strong>4 to 6 Weeks</strong><span>Quality focused shipping</span></div>
+<div class="stat"><strong>Build Link</strong><span>Tracking with every order</span></div>
+</div>
+</div>
+<div aria-label="Mobile app preview" class="phone-wrap">
+<div class="phone">
+<div class="screen">
+<div class="app-content">
+<div class="mini-head"><span>WASH / DRY / FOLD OS</span><span id="clock">12:00</span></div>
+<div class="washer-card">
+<img alt="SOAP MONEY wordmark logo" src="assets/soap-money-wordmark.png"/>
+<h2>Drop Cycle Active</h2>
+<div class="progress-shell"><div class="progress-bar"></div></div>
+</div>
+<div class="quick-cycles">
+<div class="cycle"><span>Wash</span><strong>Pick The Drop</strong></div>
+<div class="cycle"><span>Dry</span><strong>Lock The Fit</strong></div>
+<div class="cycle"><span>Fold</span><strong>Review Cart</strong></div>
+<div class="cycle"><span>Spin</span><strong>Final Sale</strong></div>
+</div>
+<div class="app-bottom">
+<span class="tab active"><i></i>Wash</span>
+<span class="tab"><i></i>Dry</span>
+<span class="tab"><i></i>Fold</span>
+<span class="tab"><i></i>Cart</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<div aria-hidden="true" class="ticker">
+<div class="ticker-track">
+<span>SOAP MONEY GOODS</span><span>FUTURE LAUNDROMAT</span><span>HEAVY GSM</span><span>FREE HD WALLPAPERS</span><span>OFFICIAL SOAP BAR COMING SOON</span><span>LAUNDRY CARD ACCESS</span><span>BLACK / WHITE UNIFORM</span><span>SOAP CARD LIMITED</span><span>FINAL SALE</span><span>DROP CYCLE LIVE</span>
+<span>SOAP MONEY GOODS</span><span>FUTURE LAUNDROMAT</span><span>HEAVY GSM</span><span>FREE HD WALLPAPERS</span><span>OFFICIAL SOAP BAR COMING SOON</span><span>LAUNDRY CARD ACCESS</span><span>BLACK / WHITE UNIFORM</span><span>SOAP CARD LIMITED</span><span>FINAL SALE</span><span>DROP CYCLE LIVE</span>
+</div>
+</div>
+<section class="wash-flow-section reveal" id="wash-dry-fold">
+<div class="section-head">
+<h2>Wash. Dry. Fold.</h2>
+</div>
+<div aria-label="Wash Dry Fold shopping flow" class="wash-flow-grid">
+<article class="flow-card wash-step">
+<span class="flow-number">01</span>
+<h3>Wash</h3>
+<p>Browse the product cycles: Soap Money Tees, Soap Card Tees limited edition, Laundry Card, Trucker Hat, the LAUNDRYTAPE series, the One Token sticker, free SOAP MONEY Wallpapers, and the future official Soap Money bar preview.</p>
+</article>
+<article class="flow-card dry-step">
+<span class="flow-number">02</span>
+<h3>Dry</h3>
+<p>Tap front and back views, choose tee size S to 2XL, and let the washer and dryer micro sounds confirm each move.</p>
+</article>
+<article class="flow-card fold-step">
+<span class="flow-number">03</span>
+<h3>Fold</h3>
+<p>Open the popup checkout to review item photos, sizes, views, prices, subtotal, shipping timing, and final sale policy. Digital wallpapers download instantly for $0.00, while physical goods ship in 4 to 6 weeks with a special build tracking link.</p>
+<button class="flow-checkout-btn" data-open-checkout="" type="button">Open Checkout</button>
+</article>
+</div>
+</section>
+<section class="official-bar-section reveal" id="official-bar">
+<div class="section-head">
+<h2>Official bar of soap</h2>
+<p>The future SOAP MONEY product: a bold natural bar built to connect laundry culture, luxury streetwear, and a clean daily ritual.</p>
+</div>
+<div class="official-bar-panel">
+<div class="official-bar-art">
+<img alt="SOAP MONEY official natural bar of soap ingredients preview with olive oil, coconut oil, shea butter, aloe vera, activated charcoal, and oatmeal" src="assets/soap-money-official-bar-ingredients.webp"/>
+</div>
+<div class="official-bar-copy">
+<div>
+<span class="official-bar-kicker">Future Release / Premium Natural Bar</span>
+<h2>Soap Money</h2>
+<p><strong>SOAP MONEY Official Bar of Soap</strong> is the next evolution of the brand: a real use product with the same black and white futuristic laundromat energy as the apparel and wallpapers. This bar is being developed for a clean daily ritual, premium shelf presence, and a luxury streetwear product experience.</p>
+<div aria-label="Planned ingredient highlights" class="ingredient-cloud">
+<span>Olive Oil</span>
+<span>Coconut Oil</span>
+<span>Shea Butter</span>
+<span>Aloe Vera</span>
+<span>Activated Charcoal</span>
+<span>Oatmeal</span>
+</div>
+<div class="official-bar-specs">
+<div class="official-bar-spec"><strong>Clean Identity</strong><span>Designed as a premium bar with an embossed SM mark, rich texture, and dark minimal brand look.</span></div>
+<div class="official-bar-spec"><strong>Future Drop</strong><span>Not available for checkout yet. This section builds interest before the first quality focused rollout.</span></div>
+<div class="official-bar-spec"><strong>Brand Fit</strong><span>Matches the Soap Money world: laundry culture, luxury streetwear energy, minimal graphics, bold tone, and clean finish.</span></div>
+<div class="official-bar-spec"><strong>Launch Path</strong><span>Use the waitlist to collect early interest for samples, first release, and restock alerts.</span></div>
+</div>
+</div>
+<div>
+<div class="official-bar-actions">
+<span class="coming-soon-price">Coming Soon</span>
+<a class="btn btn-primary" href="#join">Join The Soap Bar Waitlist</a>
+<a class="btn btn-secondary" href="#contact">Ask About The Bar</a>
+</div>
+<p class="official-bar-note">Preview section only. Pricing, final ingredients, packaging, and release date can be updated when the first quality run is ready.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="shop">
+<div class="section-head">
+<h2>Product cycles</h2>
+<p>The product rack is built for luxury streetwear with real quality behind every piece: heavyweight tees, the Soap Money Laundry Card, the adjustable Trucker Hat, the limited Soap Card Tees drop, the full LAUNDRYTAPE audio series, the One Token collectible sticker, HD SOAP MONEY Wallpapers for iPhone and Android, and the coming SOAP MONEY official bar of soap. Physical goods ship in 4 to 6 weeks due to high demand and the focus on quality. Every order that ships includes a special build tracking link.</p>
+</div>
+<div class="product-grid">
+<article class="product-card featured-product reveal" data-product-card="">
+<div class="product-visual product-photo">
+<span class="view-label" data-view-label="teeView">Front View</span>
+<img alt="Soap Money Tees black heavy GSM tee front with small chest logo" class="product-image" id="teeView" src="assets/product-heavy-gsm-tee-front.webp"/>
+</div>
+<div aria-label="Soap Money Tees view toggle" class="product-switcher" role="group">
+<button aria-pressed="true" class="view-toggle active" data-alt="Soap Money Tees black heavy GSM tee front with small chest logo" data-label="Front View" data-src="assets/product-heavy-gsm-tee-front.webp" data-target="teeView" type="button">Front</button>
+<button aria-pressed="false" class="view-toggle" data-alt="Soap Money Tees black heavy GSM tee back with large SM logo" data-label="Back View" data-src="assets/product-heavy-gsm-tee-back.webp" data-target="teeView" type="button">Back</button>
+</div>
+<div class="product-badge-row"><small>Cycle 01</small><span class="wash-status">Sizes S to 2XL</span></div>
+<h3>Soap Money Tees</h3>
+<p>Heavyweight 300 plus GSM black tee with a dense premium hand feel, sharp structure, and clean drape. Built as a luxury street uniform with elevated cotton weight, precise print placement, and a quality focused finish.</p>
+<div aria-label="Soap Money Tees size selector" class="size-options">
+<button class="size-chip active" data-size="S" type="button">S</button>
+<button class="size-chip" data-size="M" type="button">M</button>
+<button class="size-chip" data-size="L" type="button">L</button>
+<button class="size-chip" data-size="XL" type="button">XL</button>
+<button class="size-chip" data-size="2XL" type="button">2XL</button>
+</div>
+<div class="card-footer"><span class="price">$50</span><button class="add-btn" data-default-image="assets/product-heavy-gsm-tee-front.webp" data-item="Soap Money Tees" data-price="50">Add</button></div>
+</article>
+<article class="product-card featured-product reveal" data-product-card="">
+<div class="product-visual product-photo">
+<span class="view-label" data-view-label="soapCardView">Front View</span>
+<img alt="Soap Card Tees limited edition black tee front with Soap Money chest logo" class="product-image" id="soapCardView" src="assets/product-soap-card-front.webp"/>
+</div>
+<div aria-label="Soap Card Tees view toggle" class="product-switcher" role="group">
+<button aria-pressed="true" class="view-toggle active" data-alt="Soap Card Tees limited edition black tee front with Soap Money chest logo" data-label="Front View" data-src="assets/product-soap-card-front.webp" data-target="soapCardView" type="button">Front</button>
+<button aria-pressed="false" class="view-toggle" data-alt="Soap Card Tees limited edition black tee back with hand holding Soap Money Laundry Card graphic" data-label="Back View" data-src="assets/product-soap-card-back.webp" data-target="soapCardView" type="button">Back</button>
+</div>
+<div class="product-badge-row"><small>Limited Edition</small><span class="wash-status">Soap Card Tees</span></div>
+<h3>Soap Card Tees</h3>
+<p>Limited edition heavyweight tee with a clean Soap Money chest hit on the front and oversized Laundry Card artwork on the back. Made for collectors who want a gallery piece with streetwear weight, strong print presence, and premium wash cycle energy.</p>
+<div aria-label="Soap Card Tees size selector" class="size-options">
+<button class="size-chip active" data-size="S" type="button">S</button>
+<button class="size-chip" data-size="M" type="button">M</button>
+<button class="size-chip" data-size="L" type="button">L</button>
+<button class="size-chip" data-size="XL" type="button">XL</button>
+<button class="size-chip" data-size="2XL" type="button">2XL</button>
+</div>
+<div class="card-footer"><span class="price">$150</span><button class="add-btn" data-default-image="assets/product-soap-card-front.webp" data-item="Soap Card Tees" data-price="150">Add</button></div>
+</article>
+<article class="product-card featured-product reveal" data-product-card="">
+<div class="product-visual product-photo">
+<span class="view-label" data-view-label="cardView">Front View</span>
+<img alt="Soap Money Laundry Card white card front" class="product-image" id="cardView" src="assets/product-laundry-card-front.webp"/>
+</div>
+<div aria-label="Soap Money Laundry Card view toggle" class="product-switcher" role="group">
+<button aria-pressed="true" class="view-toggle active" data-alt="Soap Money Laundry Card white card front" data-label="Front View" data-src="assets/product-laundry-card-front.webp" data-target="cardView" type="button">Front</button>
+<button aria-pressed="false" class="view-toggle" data-alt="Soap Money Laundry Card white QR card back" data-label="Back View" data-src="assets/product-laundry-card-back.webp" data-target="cardView" type="button">Back</button>
+</div>
+<div class="product-badge-row"><small>Cycle 02</small><span class="wash-status">Tap + Scan</span></div>
+<h3>Soap Money Laundry Card</h3>
+<p>Premium card style brand piece with a clean front, scan ready back, and futuristic laundromat access energy. Designed as a high quality collectible with VIP attitude, crisp layout, and luxury member feel.</p>
+<div class="card-footer"><span class="price">$100</span><button class="add-btn" data-default-image="assets/product-laundry-card-front.webp" data-item="Soap Money Laundry Card" data-price="100">Add</button></div>
+</article>
+<article class="product-card featured-product reveal" data-product-card="">
+<div class="product-visual product-photo">
+<span class="view-label" data-view-label="hatView">Worn View</span>
+<img alt="Founder wearing the Soap Money trucker hat outdoors" class="product-image" id="hatView" src="assets/soap-money-trucker-hat-worn.webp"/>
+</div>
+<div aria-label="Soap Money Trucker Hat view toggle" class="product-switcher hat-switcher" role="group">
+<button aria-pressed="true" class="view-toggle active" data-alt="Founder wearing the Soap Money trucker hat outdoors" data-label="Worn View" data-src="assets/soap-money-trucker-hat-worn.webp" data-target="hatView" type="button">Worn</button>
+<button aria-pressed="false" class="view-toggle" data-alt="Hand holding the Soap Money trucker hat under an overpass" data-label="In Hand View" data-src="assets/soap-money-trucker-hat-in-hand.webp" data-target="hatView" type="button">In Hand</button>
+</div>
+<div class="product-badge-row"><small>Cycle 03</small><span class="wash-status">One Size</span></div>
+<h3>Soap Money Trucker Hat</h3>
+<p>Adjustable one size black mesh trucker hat with a crisp embroidered Soap Money front hit. The build is clean, breathable, and premium, with lifestyle views that show the fit, the shape, and the luxury street uniform feel.</p>
+<div class="card-footer"><span class="price">$50</span><button class="add-btn" data-default-image="assets/soap-money-trucker-hat-worn.webp" data-item="Soap Money Trucker Hat" data-price="50">Add</button></div>
+</article>
+<article class="product-card featured-product reveal" data-product-card="">
+<div class="product-visual product-photo">
+<span class="view-label" data-view-label="laundryTapeView">Vol. 1 • House / Chill Hop</span>
+<img alt="LAUNDRYTAPE Vol. 1 cassette cover hosted by OdotNYC" class="product-image" id="laundryTapeView" src="assets/laundrytape-vol-1.png"/>
+</div>
+<div aria-label="LaundryTape series cover selector" class="product-switcher tape-switcher" role="group">
+<button aria-pressed="true" class="view-toggle active" data-alt="LAUNDRYTAPE Vol. 1 cassette cover hosted by OdotNYC" data-label="Vol. 1 • House / Chill Hop" data-src="assets/laundrytape-vol-1.png" data-target="laundryTapeView" type="button">V1</button>
+<button aria-pressed="false" class="view-toggle" data-alt="LAUNDRYTAPE Vol. 2 cassette cover hosted by OdotNYC" data-label="Vol. 2 • R&amp;B" data-src="assets/laundrytape-vol-2.png" data-target="laundryTapeView" type="button">V2</button>
+<button aria-pressed="false" class="view-toggle" data-alt="LAUNDRYTAPE Vol. 3 cassette cover hosted by OdotNYC" data-label="Vol. 3 • Afrobeats" data-src="assets/laundrytape-vol-3.png" data-target="laundryTapeView" type="button">V3</button>
+<button aria-pressed="false" class="view-toggle" data-alt="LAUNDRYTAPE Vol. 4 cassette cover hosted by OdotNYC" data-label="Vol. 4 • Neo Soul / Jazz" data-src="assets/laundrytape-vol-4.png" data-target="laundryTapeView" type="button">V4</button>
+</div>
+<div class="product-badge-row"><small>Audio Series</small><span class="wash-status">Hosted by OdotNYC</span></div>
+<h3>LAUNDRYTAPE Series</h3>
+<p>All four tapes in the SOAP MONEY hosted audio series are now in the rack. Choose between House and Chill Hop, R&amp;B, Afrobeats, or Neo Soul and Jazz, with luxury cassette cover art and a built in stream selector in the LaundryTape player section below.</p>
+<div class="card-footer"><span class="price free-price">$0.00</span><button class="add-btn" data-default-image="assets/laundrytape-vol-1.png" data-item="LAUNDRYTAPE Series" data-price="0">Add</button></div>
+</article>
+<article class="product-card featured-product reveal" data-product-card="">
+<div class="product-visual product-photo">
+<span class="view-label" data-view-label="oneTokenView">Gloss Vinyl Sticker</span>
+<img alt="One Token sticker featuring a pixelated gold SM coin" class="product-image" id="oneTokenView" src="assets/one-token-sticker.png"/>
+</div>
+<div class="product-badge-row"><small>Sticker Drop</small><span class="wash-status">Collectible</span></div>
+<h3>One Token</h3>
+<p>Gloss vinyl sticker built from the pixel SM coin artwork. Sized for laptops, notebooks, packaging, and cases, with a clean retro game feel and a quality finish that makes it an easy collectible add on.</p>
+<div class="card-footer"><span class="price">$5</span><button class="add-btn" data-default-image="assets/one-token-sticker.png" data-item="One Token" data-price="5">Add</button></div>
+</article>
+<article class="product-card featured-product wallpaper-card reveal" data-product-card="">
+<div class="product-visual product-photo wallpaper-visual">
+<span class="view-label" data-view-label="wallpaperView">Wallpaper 04</span>
+<img alt="SOAP MONEY raining soap bars dark lock screen wallpaper" class="product-image" id="wallpaperView" src="assets/soap-money-wallpaper-04-raining-soap-bars-hd.jpg"/>
+</div>
+<div aria-label="SOAP MONEY Wallpapers preview selector" class="product-switcher wallpaper-switcher" role="group">
+<button aria-pressed="false" class="view-toggle" data-alt="SOAP MONEY cinematic laundromat lock screen wallpaper" data-label="Wallpaper 01" data-src="assets/soap-money-wallpaper-01-laundromat-silhouette-hd.jpg" data-target="wallpaperView" type="button">01</button>
+<button aria-pressed="false" class="view-toggle" data-alt="SOAP MONEY black bar of soap held in hand wallpaper" data-label="Wallpaper 02" data-src="assets/soap-money-wallpaper-02-black-soap-hand-hd.jpg" data-target="wallpaperView" type="button">02</button>
+<button aria-pressed="false" class="view-toggle" data-alt="SOAP MONEY black soap close-up hand wallpaper" data-label="Wallpaper 03" data-src="assets/soap-money-wallpaper-03-soap-closeup-hd.jpg" data-target="wallpaperView" type="button">03</button>
+<button aria-pressed="true" class="view-toggle active" data-alt="SOAP MONEY raining soap bars dark lock screen wallpaper" data-label="Wallpaper 04" data-src="assets/soap-money-wallpaper-04-raining-soap-bars-hd.jpg" data-target="wallpaperView" type="button">04</button>
+<button aria-pressed="false" class="view-toggle" data-alt="SOAP MONEY logo silhouette dark wallpaper" data-label="Wallpaper 05" data-src="assets/soap-money-wallpaper-05-logo-silhouette-hd.jpg" data-target="wallpaperView" type="button">05</button>
+<button aria-pressed="false" class="view-toggle" data-alt="SOAP MONEY SM logo bubbles dark wallpaper" data-label="Wallpaper 06" data-src="assets/soap-money-wallpaper-06-sm-logo-bubbles-hd.jpg" data-target="wallpaperView" type="button">06</button>
+</div>
+<div class="product-badge-row"><small>Free Download</small><span class="wash-status">HD iPhone + Android</span></div>
+<h3>SOAP MONEY Wallpapers</h3>
+<p>Free HD portrait wallpaper pack built for the SOAP MONEY black and white laundromat universe. Includes cinematic soap bars, SM logo lock screens, bubble textures, and dark brand visuals optimized for iPhone and Android home screens or lock screens. Full image previews are shown so every wallpaper can be inspected before download.</p>
+<div class="card-footer"><span class="price free-price">$0.00</span><a class="add-btn download-btn" data-default-image="assets/soap-money-wallpaper-04-raining-soap-bars-hd.jpg" data-direct-download="true" data-item="SOAP MONEY Wallpapers" data-price="0" download="soap-money-wallpapers-hd.zip" href="assets/soap-money-wallpapers-hd.zip">Download</a></div>
+</article>
+</div>
+</section>
+<section class="reveal" id="laundrytapes">
+<div class="section-head">
+<h2>LaundryTape player</h2>
+<p>Give visitors a dedicated place to choose which LaundryTape they want to stream. The interface is built like a cassette deck so the audio series feels native to the SOAP MONEY world.</p>
+</div>
+<div class="tape-player-layout">
+<article class="tape-deck">
+<div class="tape-deck-head">
+<span class="contact-kicker">Tape Player</span>
+<strong id="tapeNowPlaying">Deck Ready</strong>
+</div>
+<div class="tape-deck-window">
+<img alt="LAUNDRYTAPE Vol. 1 cassette cover hosted by OdotNYC" id="tapePlayerCover" src="assets/laundrytape-vol-1.png"/>
+</div>
+<div class="tape-display">
+<span>Now Loaded</span>
+<h3 id="tapePlayerTitle">LAUNDRYTAPE Vol. 1</h3>
+<p id="tapePlayerGenre">House / Chill Hop</p>
+</div>
+<div class="tape-progress-shell"><div class="tape-progress-bar" id="tapeProgressBar"></div></div>
+<div class="tape-status-row">
+<span id="tapePlayerStatus">Select a tape and press stream</span>
+<strong id="tapePlayerTime">00:00 / 24:00</strong>
+</div>
+<div class="tape-controls">
+<button class="tape-control" id="tapePrev" type="button">Prev</button>
+<button class="tape-control primary" id="tapePlay" type="button">Stream</button>
+<button class="tape-control" id="tapeNext" type="button">Next</button>
+</div>
+</article>
+<article class="tape-selector-panel">
+<span class="contact-kicker">Hosted by OdotNYC</span>
+<h3>Choose your wash cycle</h3>
+<p>All current LaundryTapes are loaded into the selector. Pick Vol. 1 through Vol. 4, then tap stream to cue the mood you want. When final audio files are ready, the same deck can connect directly to your live stream links or embeds.</p>
+<div class="tape-select-grid">
+<button class="tape-select active" data-cover="assets/laundrytape-vol-1.png" data-duration="24:00" data-genre="House / Chill Hop" data-note="The first hosted LaundryTape. A smooth house and chill hop wash cycle that sets the tone for the series." data-part="Pt. 1" data-tape="LAUNDRYTAPE Vol. 1" type="button"><strong>Vol. 1</strong><span>House / Chill Hop</span></button>
+<button class="tape-select" data-cover="assets/laundrytape-vol-2.png" data-duration="22:00" data-genre="R&amp;B" data-note="A softer pink wash cycle focused on R&amp;B mood and smooth late night energy." data-part="Pt. 2" data-tape="LAUNDRYTAPE Vol. 2" type="button"><strong>Vol. 2</strong><span>R&amp;B</span></button>
+<button class="tape-select" data-cover="assets/laundrytape-vol-3.png" data-duration="26:00" data-genre="Afrobeats" data-note="The red, black, and green cassette brings brighter motion with an Afrobeats focused wash cycle." data-part="Pt. 3" data-tape="LAUNDRYTAPE Vol. 3" type="button"><strong>Vol. 3</strong><span>Afrobeats</span></button>
+<button class="tape-select" data-cover="assets/laundrytape-vol-4.png" data-duration="28:00" data-genre="Neo Soul / Jazz" data-note="A butter brown tape with a rich late night tone, moving through Neo Soul and Jazz textures." data-part="Pt. 4" data-tape="LAUNDRYTAPE Vol. 4" type="button"><strong>Vol. 4</strong><span>Neo Soul / Jazz</span></button>
+</div>
+<div class="tape-meta-grid">
+<div class="tape-meta-card"><strong>Series</strong><span id="tapeMetaTitle">LAUNDRYTAPE Vol. 1</span></div>
+<div class="tape-meta-card"><strong>Part</strong><span id="tapeMetaPart">Pt. 1</span></div>
+<div class="tape-meta-card"><strong>Genre</strong><span id="tapeMetaGenre">House / Chill Hop</span></div>
+<div class="tape-meta-card"><strong>Runtime</strong><span id="tapeMetaDuration">24:00</span></div>
+</div>
+<p class="tape-note" id="tapePlayerNote">The first hosted LaundryTape. A smooth house and chill hop wash cycle that sets the tone for the series.</p>
+</article>
+</div>
+</section>
+<section class="reveal" id="film">
+<div class="section-head">
+<h2>Short film</h2>
+<p>A dedicated section to spotlight the SOAP MONEY short film with a cover display and a clean viewer area that can later connect to your MP4 upload or YouTube or Vimeo embed.</p>
+</div>
+<div class="film-grid">
+<article class="film-cover-card">
+<span class="contact-kicker">Official Cover</span>
+<h3>SOAP MONEY</h3>
+<div class="film-cover-frame">
+<img alt="SOAP MONEY short film cover art" src="assets/soap-money-short-film-cover.webp"/>
+</div>
+<div class="film-meta-row">
+<span>Film Poster</span>
+<span>Campaign Cover</span>
+<span>Streetwear Cinema</span>
+</div>
+</article>
+<article class="film-player-card">
+<span class="contact-kicker">Soap Money Episode 01</span>
+<h3>Watch Soap Money</h3>
+<div aria-label="SOAP MONEY short film viewing area showing the film cover as a poster placeholder" class="film-player-shell" role="img">
+<img alt="" src="assets/soap-money-short-film-cover.webp"/>
+<button aria-label="Preview short film section" class="film-play-badge" data-film-placeholder="" type="button">▶</button>
+<div class="film-player-copy">
+<strong>SOAP MONEY Short Film Trailer</strong>
+</div>
+</div>
+<div class="cta-row">
+<a class="btn btn-primary" href="#contact">Ask About The Film</a>
+<a class="btn btn-secondary" href="#shop">Shop The Hat</a>
+</div>
+</article>
+</div>
+</section>
+<section class="reveal" id="returns">
+<div class="section-head">
+<h2>Final Sale Policy</h2>
+<p>No returns. No exchanges. Every SOAP MONEY purchase is final, so check your size, product view, shipping timing, and cart before checkout.</p>
+</div>
+<div class="returns-panel">
+<div class="returns-grid">
+<article class="policy-card">
+<strong>All purchases final</strong>
+<p>SOAP MONEY products are made for limited drops, premium materials, and in house customization. Once an order is placed, the sale is final.</p>
+</article>
+<article class="policy-card">
+<strong>No returns</strong>
+<p>We do not accept returns after purchase. Please review the product name, price, tee size, product images, and view toggle before checking out.</p>
+</article>
+<article class="policy-card">
+<strong>No exchanges</strong>
+<p>Soap Money Tees and Soap Card Tees run S to 2XL. Choose carefully because size swaps and exchanges are not available.</p>
+</article>
+<article class="policy-card">
+<strong>Quality build timing</strong>
+<p>Physical goods ship in 4 to 6 weeks due to high demand and our focus on quality. Every order that ships includes a special build tracking link so customers can follow the product process.</p>
+</article>
+</div>
+</div>
+</section>
+<section class="reveal" id="contact">
+<div class="section-head">
+<h2>Contact The Counter</h2>
+<p>Questions about a drop, sizing, pickup, collabs, or bulk orders? Send it through the SOAP MONEY counter.</p>
+</div>
+<div class="contact-panel">
+<div class="contact-copy">
+<span class="contact-kicker">SOAP MONEY SERVICE WINDOW</span>
+<h3>Tap in before the next cycle.</h3>
+<p>Fill out our form with any questions or concerns. Soap Money</p>
+<div aria-label="Contact reasons" class="contact-chips">
+<span>Product Questions</span>
+<span>Bulk Orders</span>
+<span>Collabs</span>
+<span>Pickup Info</span>
+</div>
+</div>
+<form class="contact-form" id="contactForm">
+<label>
               Name
-              <input type="text" name="name" placeholder="Your name" required>
-            </label>
-            <label>
+              <input name="name" placeholder="Your name" required="" type="text"/>
+</label>
+<label>
               Email
-              <input type="email" name="email" placeholder="email@domain.com" required>
-            </label>
-            <label>
+              <input name="email" placeholder="email@domain.com" required="" type="email"/>
+</label>
+<label>
               Product Interest
-              <select name="product" aria-label="Product interest">
-                <option>Soap Money Tees</option>
-                <option>Soap Card Limited Edition</option>
-                <option>Soap Money Trucker Hat</option>
-                <option>Soap Money Laundry Card</option>
-                <option>SOAP MONEY Wallpapers</option>
-                <option>Soap Money Official Bar of Soap</option>
-                <option>SOAP MONEY Short Film</option>
-                <option>Collab / Bulk Order</option>
-              </select>
-            </label>
-            <label>
+              <select aria-label="Product interest" name="product">
+<option>Soap Money Tees</option>
+<option>Soap Card Tees</option>
+<option>Soap Money Trucker Hat</option>
+<option>Soap Money Laundry Card</option>
+<option>LAUNDRYTAPE Series</option>
+<option>One Token Sticker</option>
+<option>SOAP MONEY Wallpapers</option>
+<option>Soap Money Official Bar of Soap</option>
+<option>SOAP MONEY Short Film</option>
+<option>Collab / Bulk Order</option>
+</select>
+</label>
+<label>
               Message
-              <textarea name="message" placeholder="Tell us what you need washed, dried, or folded..." required></textarea>
-            </label>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </section>
-
-      <section id="join" class="reveal">
-        <div class="signup">
-          <div>
-            <h2>Get the next cycle.</h2>
-            <p>Collect emails here for early access, limited Soap Card drops, restocks, and future laundromat inspired goods.</p>
-          </div>
-          <form class="signup-form" id="signupForm">
-            <input type="email" placeholder="email@soapmoney.co" aria-label="Email address" required>
-            <button type="submit">Join</button>
-          </form>
-        </div>
-      </section>
-
-      <footer>
-        <div><img src="assets/soap-money-sm-logo.png" alt="SM logo"></div>
-        <div>Soap Money 2026, All Rights Reserved. | Powered by RoboTechi.</div>
-      </footer>
-    </main>
-  </div>
-
-  <nav class="mobile-nav" aria-label="Mobile navigation">
-    <a href="#top"><i></i>Home</a>
-    <a href="#shop"><i></i>Shop</a>
-    <a href="#official-bar"><i></i>Bar</a>
-    <a href="#film"><i></i>Film</a>
-    <a href="#contact"><i></i>Contact</a>
-    <button type="button" id="mobileCart" aria-label="Open checkout cart"><i></i><span>Cart 0</span></button>
-  </nav>
-
-
-
-
-  <div class="quick-view-modal" id="productQuickView" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle" aria-hidden="true">
-    <div class="quick-view-sheet" role="document">
-      <div class="quick-view-head">
-        <span id="quickViewCycle">Product Preview</span>
-        <button class="quick-view-close" type="button" id="quickViewClose" aria-label="Close product preview">×</button>
-      </div>
-      <div class="quick-view-body">
-        <div class="quick-view-photo-wrap">
-          <img id="quickViewImage" src="assets/product-heavy-gsm-tee-front.webp" alt="SOAP MONEY product preview">
-        </div>
-        <div class="quick-view-info">
-          <div class="quick-view-meta"><span id="quickViewView">Front View</span><span>Tap product to inspect</span></div>
-          <h3 id="quickViewTitle">Soap Money Tees</h3>
-          <p id="quickViewDescription">Product details load here.</p>
-          <div class="quick-view-actions">
-            <strong id="quickViewPrice">$50</strong>
-            <button type="button" id="quickViewAdd">Add To Checkout</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" aria-hidden="true">
-    <div class="checkout-sheet" role="document">
-      <div class="checkout-head">
-        <div>
-          <span>Fold Cycle Checkout</span>
-          <h2 id="checkoutTitle">Review the load</h2>
-        </div>
-        <button class="checkout-close" type="button" id="checkoutClose" aria-label="Close checkout">×</button>
-      </div>
-      <div class="checkout-body">
-        <div id="emptyCheckout" class="empty-checkout">
-          <div>
-            <strong>Your cart is clean.</strong><br>
+              <textarea name="message" placeholder="Tell us what you need washed, dried, or folded..." required=""></textarea>
+</label>
+<button type="submit">Send Message</button>
+</form>
+</div>
+</section>
+<section class="reveal" id="join">
+<div class="signup">
+<div>
+<h2>Get the next cycle.</h2>
+<p>Collect emails here for early access, limited Soap Card Tees drops, restocks, LAUNDRYTAPE releases, One Token sticker updates, and future laundromat inspired goods.</p>
+</div>
+<form class="signup-form" id="signupForm">
+<input aria-label="Email address" placeholder="email@soapmoney.co" required="" type="email"/>
+<button type="submit">Join</button>
+</form>
+</div>
+</section>
+<footer>
+<div><img alt="SM logo" src="assets/soap-money-sm-logo.png"/></div>
+<div>Soap Money 2026, All Rights Reserved. | Powered by RoboTechi.</div>
+</footer>
+</main>
+</div>
+<nav aria-label="Mobile navigation" class="mobile-nav">
+<a href="#top"><i></i>Home</a>
+<a href="#shop"><i></i>Shop</a>
+<a href="#official-bar"><i></i>Bar</a>
+<a href="#film"><i></i>Film</a>
+<a href="#contact"><i></i>Contact</a>
+<button aria-label="Open checkout cart" id="mobileCart" type="button"><i></i><span>Cart 0</span></button>
+</nav>
+<div aria-hidden="true" aria-labelledby="quickViewTitle" aria-modal="true" class="quick-view-modal" id="productQuickView" role="dialog">
+<div class="quick-view-sheet" role="document">
+<div class="quick-view-head">
+<span id="quickViewCycle">Product Preview</span>
+<button aria-label="Close product preview" class="quick-view-close" id="quickViewClose" type="button">×</button>
+</div>
+<div class="quick-view-body">
+<div class="quick-view-photo-wrap">
+<img alt="SOAP MONEY product preview" id="quickViewImage" src="assets/product-heavy-gsm-tee-front.webp"/>
+</div>
+<div aria-label="Product image gallery" class="quick-view-gallery-row">
+<button aria-label="Previous product image" class="quick-view-gallery-nav" id="quickViewPrev" type="button">‹</button>
+<div class="quick-view-thumbs" id="quickViewThumbs"></div>
+<button aria-label="Next product image" class="quick-view-gallery-nav" id="quickViewNext" type="button">›</button>
+</div>
+<div class="quick-view-info">
+<div class="quick-view-meta"><span id="quickViewView">Front View</span><span>Scroll product images</span></div>
+<h3 id="quickViewTitle">Soap Money Tees</h3>
+<p id="quickViewDescription">Product details load here.</p>
+<div class="quick-view-actions">
+<strong id="quickViewPrice">$50</strong>
+<button id="quickViewAdd" type="button">Add To Checkout</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-hidden="true" aria-labelledby="checkoutTitle" aria-modal="true" class="checkout-modal" id="checkoutModal" role="dialog">
+<div class="checkout-sheet" role="document">
+<div class="checkout-head">
+<div>
+<span>Fold Cycle Checkout</span>
+<h2 id="checkoutTitle">Review the load</h2>
+</div>
+<button aria-label="Close checkout" class="checkout-close" id="checkoutClose" type="button">×</button>
+</div>
+<div class="checkout-body">
+<div class="empty-checkout" id="emptyCheckout">
+<div>
+<strong>Your cart is clean.</strong><br/>
             Add SOAP MONEY goods from the product cycles, then open checkout to see item photos here.
           </div>
-        </div>
-        <div class="checkout-items" id="checkoutItems" aria-live="polite"></div>
-        <div class="checkout-footer">
-          <div class="checkout-total-row"><span id="checkoutCount">0 Items</span><strong id="checkoutSubtotal">$0</strong></div>
-          <div class="checkout-policy-note"><strong>Final sale:</strong> no returns and no exchanges. Review product photos, selected size, view, and price before checkout.</div>
-          <div class="checkout-actions">
-            <button class="clear-cart-btn" type="button" id="clearCart">Clear Cart</button>
-            <button class="checkout-pay-btn" type="button" id="checkoutPay">Continue Checkout</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast" id="toast" role="status" aria-live="polite">Added to cart</div>
-
-
-  <script>
+</div>
+<div aria-live="polite" class="checkout-items" id="checkoutItems"></div>
+<div class="checkout-footer">
+<div class="checkout-total-row"><span id="checkoutCount">0 Items</span><strong id="checkoutSubtotal">$0</strong></div>
+<div class="checkout-policy-note"><strong>Final sale:</strong> no returns and no exchanges. Review product photos, selected size, view, price, and shipping timing before checkout. Physical goods ship in 4 to 6 weeks and include a special build tracking link.</div>
+<div class="checkout-actions">
+<button class="clear-cart-btn" id="clearCart" type="button">Clear Cart</button>
+<button class="checkout-pay-btn" id="checkoutPay" type="button">Continue Checkout</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div aria-live="polite" class="toast" id="toast" role="status">Added to cart</div>
+<button aria-controls="worldClockPanel" aria-expanded="false" class="world-clock-fab" id="worldClockButton" type="button">
+<span>World Time</span>
+<strong id="worldClockFabTime">NYC 00:00</strong>
+</button>
+<div aria-hidden="true" class="world-clock-panel" id="worldClockPanel">
+<h3>World Clock</h3>
+<div class="world-time-list" id="worldTimeList"></div>
+</div>
+<script>
     const cartButton = document.getElementById('cartButton');
     const mobileCart = document.getElementById('mobileCart');
     const toast = document.getElementById('toast');
@@ -3116,7 +3704,32 @@
     const quickViewView = document.getElementById('quickViewView');
     const quickViewCycle = document.getElementById('quickViewCycle');
     const quickViewAdd = document.getElementById('quickViewAdd');
+    const quickViewThumbs = document.getElementById('quickViewThumbs');
+    const quickViewPrev = document.getElementById('quickViewPrev');
+    const quickViewNext = document.getElementById('quickViewNext');
+    const worldClockButton = document.getElementById('worldClockButton');
+    const worldClockPanel = document.getElementById('worldClockPanel');
+    const worldClockFabTime = document.getElementById('worldClockFabTime');
+    const worldTimeList = document.getElementById('worldTimeList');
+    const tapeSelectButtons = Array.from(document.querySelectorAll('.tape-select'));
+    const tapePlayerCover = document.getElementById('tapePlayerCover');
+    const tapePlayerTitle = document.getElementById('tapePlayerTitle');
+    const tapePlayerGenre = document.getElementById('tapePlayerGenre');
+    const tapePlayerStatus = document.getElementById('tapePlayerStatus');
+    const tapePlayerTime = document.getElementById('tapePlayerTime');
+    const tapePlayerNote = document.getElementById('tapePlayerNote');
+    const tapeMetaTitle = document.getElementById('tapeMetaTitle');
+    const tapeMetaPart = document.getElementById('tapeMetaPart');
+    const tapeMetaGenre = document.getElementById('tapeMetaGenre');
+    const tapeMetaDuration = document.getElementById('tapeMetaDuration');
+    const tapeProgressBar = document.getElementById('tapeProgressBar');
+    const tapeNowPlaying = document.getElementById('tapeNowPlaying');
+    const tapePrev = document.getElementById('tapePrev');
+    const tapePlay = document.getElementById('tapePlay');
+    const tapeNext = document.getElementById('tapeNext');
     let activeQuickViewCard = null;
+    let quickViewImages = [];
+    let quickViewIndex = 0;
     let cartCount = 0;
     let cartItems = [];
     let mode = 'Wash Mode';
@@ -3128,6 +3741,51 @@
     }
     updateClock();
     setInterval(updateClock, 1000 * 30);
+
+    const worldZones = [
+      { label: 'NYC', city: 'New York', timeZone: 'America/New_York' },
+      { label: 'LON', city: 'London', timeZone: 'Europe/London' },
+      { label: 'PAR', city: 'Paris', timeZone: 'Europe/Paris' },
+      { label: 'TOK', city: 'Tokyo', timeZone: 'Asia/Tokyo' }
+    ];
+
+    function formatZoneTime(timeZone) {
+      return new Intl.DateTimeFormat([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        timeZone
+      }).format(new Date());
+    }
+
+    function updateWorldClock() {
+      worldClockFabTime.textContent = `NYC ${formatZoneTime('America/New_York')}`;
+      worldTimeList.innerHTML = worldZones.map(zone => `
+        <div class="world-time-row">
+          <span>${zone.city}</span>
+          <strong>${formatZoneTime(zone.timeZone)}</strong>
+        </div>
+      `).join('');
+    }
+
+    updateWorldClock();
+    setInterval(updateWorldClock, 1000 * 30);
+
+    worldClockButton.addEventListener('click', () => {
+      const isOpen = worldClockPanel.classList.toggle('open');
+      worldClockButton.setAttribute('aria-expanded', String(isOpen));
+      worldClockPanel.setAttribute('aria-hidden', String(!isOpen));
+      updateWorldClock();
+      playLaundrySound('dryer');
+    });
+
+    document.addEventListener('click', event => {
+      if (!worldClockPanel.classList.contains('open')) return;
+      if (worldClockPanel.contains(event.target) || worldClockButton.contains(event.target)) return;
+      worldClockPanel.classList.remove('open');
+      worldClockButton.setAttribute('aria-expanded', 'false');
+      worldClockPanel.setAttribute('aria-hidden', 'true');
+    });
+
 
     function ensureAudio() {
       const AudioContextClass = window.AudioContext || window.webkitAudioContext;
@@ -3275,35 +3933,93 @@
 
 
 
+    function getProductGallery(card) {
+      const activeImage = card.querySelector('.product-image');
+      const currentSrc = activeImage?.getAttribute('src') || '';
+      const toggles = Array.from(card.querySelectorAll('.view-toggle[data-src]'));
+      let gallery = toggles.map(toggle => ({
+        src: toggle.dataset.src,
+        alt: toggle.dataset.alt || 'SOAP MONEY product image',
+        label: toggle.dataset.label || toggle.textContent.trim() || 'Product View'
+      }));
+
+      if (!gallery.length && activeImage) {
+        gallery = [{
+          src: currentSrc,
+          alt: activeImage.getAttribute('alt') || 'SOAP MONEY product image',
+          label: card.querySelector('.view-label')?.textContent?.trim() || 'Product View'
+        }];
+      }
+
+      const uniqueGallery = [];
+      gallery.forEach(item => {
+        if (!item.src || uniqueGallery.some(existing => existing.src === item.src)) return;
+        uniqueGallery.push(item);
+      });
+
+      const activeIndex = Math.max(0, uniqueGallery.findIndex(item => item.src === currentSrc));
+      return { gallery: uniqueGallery, activeIndex };
+    }
+
+    function renderQuickViewGallery() {
+      const current = quickViewImages[quickViewIndex] || quickViewImages[0];
+      if (!current) return;
+      quickViewImage.src = current.src;
+      quickViewImage.alt = current.alt;
+      quickViewView.textContent = current.label;
+      quickViewPrev.disabled = quickViewImages.length <= 1;
+      quickViewNext.disabled = quickViewImages.length <= 1;
+      quickViewThumbs.innerHTML = '';
+
+      quickViewImages.forEach((item, index) => {
+        const thumb = document.createElement('button');
+        thumb.type = 'button';
+        thumb.className = `quick-view-thumb${index === quickViewIndex ? ' active' : ''}`;
+        thumb.setAttribute('aria-label', item.label);
+        thumb.innerHTML = `<img src="${item.src}" alt="${item.alt}">`;
+        thumb.addEventListener('click', () => {
+          quickViewIndex = index;
+          renderQuickViewGallery();
+          playLaundrySound('dryer');
+        });
+        quickViewThumbs.appendChild(thumb);
+      });
+    }
+
+    function moveQuickView(direction) {
+      if (!quickViewImages.length) return;
+      quickViewIndex = (quickViewIndex + direction + quickViewImages.length) % quickViewImages.length;
+      renderQuickViewGallery();
+      playLaundrySound('dryer');
+    }
+
     function getProductPreviewData(card) {
-      const image = card.querySelector('.product-image');
       const title = card.querySelector('h3')?.textContent?.trim() || 'SOAP MONEY Product';
       const description = card.querySelector('p')?.textContent?.trim() || 'SOAP MONEY product preview.';
       const price = card.querySelector('.price')?.textContent?.trim() || '$0';
-      const view = card.querySelector('.view-label')?.textContent?.trim() || card.querySelector('.wash-status')?.textContent?.trim() || 'Product View';
       const cycle = card.querySelector('small')?.textContent?.trim() || 'Product Preview';
+      const galleryData = getProductGallery(card);
       return {
         title,
         description,
         price,
-        view,
         cycle,
-        image: image?.getAttribute('src') || 'assets/soap-money-wordmark.png',
-        alt: image?.getAttribute('alt') || `${title} product preview`
+        gallery: galleryData.gallery,
+        activeIndex: galleryData.activeIndex
       };
     }
 
     function openProductQuickView(card) {
       activeQuickViewCard = card;
       const data = getProductPreviewData(card);
-      quickViewImage.src = data.image;
-      quickViewImage.alt = data.alt;
       quickViewTitle.textContent = data.title;
       quickViewDescription.textContent = data.description;
       quickViewPrice.textContent = data.price;
-      quickViewView.textContent = data.view;
       quickViewCycle.textContent = data.cycle;
       quickViewAdd.textContent = card.querySelector('[data-direct-download="true"]') ? 'Download Free' : 'Add To Checkout';
+      quickViewImages = data.gallery;
+      quickViewIndex = data.activeIndex;
+      renderQuickViewGallery();
       productQuickView.classList.add('open');
       productQuickView.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -3321,10 +4037,118 @@
       return Boolean(target.closest('button, a, input, select, textarea, .product-switcher, .size-options'));
     }
 
+    function parseDuration(durationText) {
+      const parts = String(durationText || '0:00').split(':').map(value => Number(value) || 0);
+      return parts.length === 2 ? parts[0] * 60 + parts[1] : 0;
+    }
+
+    function formatTapeSeconds(seconds) {
+      const safe = Math.max(0, Math.floor(seconds));
+      const mins = Math.floor(safe / 60);
+      const secs = safe % 60;
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    }
+
+    let activeTapeIndex = 0;
+    let tapeProgressSeconds = 0;
+    let tapePreviewTimer = null;
+    let tapePlaying = false;
+
+    function stopTapePreview(reset = true) {
+      window.clearInterval(tapePreviewTimer);
+      tapePreviewTimer = null;
+      tapePlaying = false;
+      if (!tapePlay) return;
+      tapePlay.textContent = 'Stream';
+      if (reset && tapeSelectButtons.length) {
+        const selected = tapeSelectButtons[activeTapeIndex];
+        const duration = selected?.dataset.duration || '00:00';
+        tapeProgressSeconds = 0;
+        if (tapeProgressBar) tapeProgressBar.style.width = '0%';
+        if (tapePlayerTime) tapePlayerTime.textContent = `00:00 / ${duration}`;
+      }
+    }
+
+    function renderTapeSelection(index, announce = false) {
+      if (!tapeSelectButtons.length) return;
+      activeTapeIndex = (index + tapeSelectButtons.length) % tapeSelectButtons.length;
+      const selected = tapeSelectButtons[activeTapeIndex];
+      tapeSelectButtons.forEach((button, buttonIndex) => {
+        button.classList.toggle('active', buttonIndex === activeTapeIndex);
+      });
+      if (tapePlayerCover) {
+        tapePlayerCover.src = selected.dataset.cover;
+        tapePlayerCover.alt = `${selected.dataset.tape} cassette cover hosted by OdotNYC`;
+      }
+      if (tapePlayerTitle) tapePlayerTitle.textContent = selected.dataset.tape;
+      if (tapePlayerGenre) tapePlayerGenre.textContent = selected.dataset.genre;
+      if (tapePlayerNote) tapePlayerNote.textContent = selected.dataset.note;
+      if (tapeMetaTitle) tapeMetaTitle.textContent = selected.dataset.tape;
+      if (tapeMetaPart) tapeMetaPart.textContent = selected.dataset.part;
+      if (tapeMetaGenre) tapeMetaGenre.textContent = selected.dataset.genre;
+      if (tapeMetaDuration) tapeMetaDuration.textContent = selected.dataset.duration;
+      if (tapePlayerStatus) tapePlayerStatus.textContent = 'Select stream ready';
+      if (tapeNowPlaying) tapeNowPlaying.textContent = 'Deck Ready';
+      stopTapePreview(true);
+      if (announce) {
+        playLaundrySound('dryer');
+        showToast(`${selected.dataset.tape} loaded`);
+      }
+    }
+
+    function startTapePreview() {
+      if (!tapeSelectButtons.length) return;
+      const selected = tapeSelectButtons[activeTapeIndex];
+      const totalSeconds = parseDuration(selected.dataset.duration);
+      const previewLength = 30;
+      window.clearInterval(tapePreviewTimer);
+      tapePlaying = true;
+      tapePlay.textContent = 'Pause';
+      if (tapePlayerStatus) tapePlayerStatus.textContent = `Streaming ${selected.dataset.tape}`;
+      if (tapeNowPlaying) tapeNowPlaying.textContent = 'Now Streaming';
+      tapePreviewTimer = window.setInterval(() => {
+        tapeProgressSeconds += 1;
+        const progress = Math.min(1, tapeProgressSeconds / previewLength);
+        const elapsed = Math.floor(totalSeconds * progress);
+        if (tapeProgressBar) tapeProgressBar.style.width = `${progress * 100}%`;
+        if (tapePlayerTime) tapePlayerTime.textContent = `${formatTapeSeconds(elapsed)} / ${selected.dataset.duration}`;
+        if (progress >= 1) {
+          stopTapePreview(false);
+          if (tapePlayerStatus) tapePlayerStatus.textContent = `${selected.dataset.tape} preview ended`;
+          if (tapeNowPlaying) tapeNowPlaying.textContent = 'Deck Ready';
+          tapeProgressSeconds = 0;
+          if (tapeProgressBar) tapeProgressBar.style.width = '0%';
+          if (tapePlayerTime) tapePlayerTime.textContent = `00:00 / ${selected.dataset.duration}`;
+        }
+      }, 1000);
+      playLaundrySound('dryer');
+      showToast(`${selected.dataset.tape} streaming`);
+    }
+
+    if (tapeSelectButtons.length && tapePlay && tapePrev && tapeNext) {
+      renderTapeSelection(0, false);
+      tapeSelectButtons.forEach((button, index) => {
+        button.addEventListener('click', () => renderTapeSelection(index, true));
+      });
+      tapePrev.addEventListener('click', () => renderTapeSelection(activeTapeIndex - 1, true));
+      tapeNext.addEventListener('click', () => renderTapeSelection(activeTapeIndex + 1, true));
+      tapePlay.addEventListener('click', () => {
+        if (tapePlaying) {
+          stopTapePreview(false);
+          if (tapePlayerStatus) tapePlayerStatus.textContent = 'Stream paused';
+          if (tapeNowPlaying) tapeNowPlaying.textContent = 'Deck Ready';
+          playLaundrySound('washer');
+          return;
+        }
+        tapeProgressSeconds = 0;
+        startTapePreview();
+      });
+    }
+
     document.querySelectorAll('[data-film-placeholder]').forEach(button => {
       button.addEventListener('click', () => {
         playLaundrySound('dryer');
-        showToast('Stay Tuned, The Film will be released soon! - Soap Money (Odot | Founder)');
+        showToast('Film viewer ready to connect your trailer or full film');
       });
     });
 
@@ -3370,6 +4194,8 @@
 
 
     quickViewClose.addEventListener('click', closeProductQuickView);
+    quickViewPrev.addEventListener('click', () => moveQuickView(-1));
+    quickViewNext.addEventListener('click', () => moveQuickView(1));
     productQuickView.addEventListener('click', event => {
       if (event.target === productQuickView) closeProductQuickView();
     });

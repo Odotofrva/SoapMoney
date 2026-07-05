@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#050505" />
-  <title>SOAP MONEY | OdotNYC (Founder)</title>
+  <title>SOAP MONEY | Future Wash Goods</title>
   <style>
     :root {
       --bg: #050505;
@@ -1562,298 +1562,6 @@
 
     .flow-checkout-btn:hover { transform: translateY(-2px) scale(1.02); }
 
-
-
-    .product-card {
-      cursor: zoom-in;
-    }
-
-    .product-card .add-btn,
-    .product-card .view-toggle,
-    .product-card .size-chip {
-      cursor: pointer;
-    }
-
-    .quick-view-modal {
-      position: fixed;
-      inset: 0;
-      z-index: 75;
-      display: grid;
-      place-items: center;
-      padding: 18px;
-      background: rgba(0,0,0,.78);
-      backdrop-filter: blur(18px);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity .22s ease;
-    }
-
-    .quick-view-modal.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .quick-view-sheet {
-      width: min(560px, 100%);
-      max-height: min(88vh, 820px);
-      overflow: auto;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 34px;
-      background:
-        radial-gradient(circle at 50% 0%, rgba(255,255,255,.18), transparent 34%),
-        linear-gradient(180deg, rgba(18,18,18,.98), rgba(4,4,4,.98));
-      box-shadow: 0 30px 90px rgba(0,0,0,.65);
-      transform: translateY(18px) scale(.98);
-      transition: transform .22s cubic-bezier(.2,.9,.2,1);
-    }
-
-    .quick-view-modal.open .quick-view-sheet {
-      transform: translateY(0) scale(1);
-    }
-
-    .quick-view-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      padding: 18px 18px 0;
-    }
-
-    .quick-view-head span {
-      color: var(--muted);
-      font-size: .72rem;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .quick-view-close {
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255,255,255,.18);
-      border-radius: 999px;
-      background: rgba(255,255,255,.08);
-      color: #fff;
-      font-size: 1.45rem;
-      cursor: pointer;
-      transition: transform .18s ease, background .18s ease;
-    }
-
-    .quick-view-close:hover {
-      transform: rotate(8deg) scale(1.04);
-      background: rgba(255,255,255,.15);
-    }
-
-    .quick-view-body {
-      padding: 16px 18px 20px;
-    }
-
-    .quick-view-photo-wrap {
-      min-height: 360px;
-      display: grid;
-      place-items: center;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,.10);
-      border-radius: 28px;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(255,255,255,.18), transparent 50%),
-        rgba(245,245,243,.96);
-    }
-
-    .quick-view-photo-wrap img {
-      width: 100%;
-      height: 100%;
-      max-height: 520px;
-      object-fit: contain;
-    }
-
-    .quick-view-info {
-      display: grid;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .quick-view-meta {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      color: var(--muted);
-      font-size: .75rem;
-      font-weight: 950;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .quick-view-info h3 {
-      margin: 0;
-      font-size: clamp(2rem, 6vw, 3.4rem);
-      line-height: .88;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-    }
-
-    .quick-view-info p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.55;
-    }
-
-    .quick-view-actions {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .quick-view-actions strong {
-      font-size: 1.35rem;
-    }
-
-    .quick-view-actions button {
-      border: 0;
-      border-radius: 999px;
-      background: #fff;
-      color: #000;
-      padding: 13px 16px;
-      font-weight: 1000;
-      cursor: pointer;
-    }
-
-    .contact-panel {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 16px;
-      border: 1px solid var(--stroke);
-      border-radius: var(--radius-xl);
-      padding: 24px;
-      background:
-        radial-gradient(circle at 12% 12%, rgba(255,255,255,.16), transparent 36%),
-        linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.035));
-      position: relative;
-      overflow: hidden;
-    }
-
-    .contact-panel::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
-      transform: translateX(-100%);
-      animation: slowScan 6s ease-in-out infinite;
-    }
-
-    .contact-copy,
-    .contact-form {
-      position: relative;
-      z-index: 1;
-    }
-
-    .contact-kicker {
-      display: inline-flex;
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 999px;
-      padding: 8px 10px;
-      color: var(--muted);
-      background: rgba(255,255,255,.07);
-      font-size: .68rem;
-      font-weight: 950;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .contact-copy h3 {
-      margin: 0;
-      font-size: clamp(2.2rem, 5vw, 4.6rem);
-      line-height: .86;
-      letter-spacing: -.06em;
-      text-transform: uppercase;
-    }
-
-    .contact-copy p {
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 460px;
-    }
-
-    .contact-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 18px;
-    }
-
-    .contact-chips span {
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 999px;
-      padding: 9px 10px;
-      background: rgba(0,0,0,.32);
-      color: rgba(255,255,255,.78);
-      font-size: .72rem;
-      font-weight: 950;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 12px;
-    }
-
-    .contact-form label {
-      display: grid;
-      gap: 7px;
-      color: rgba(255,255,255,.72);
-      font-size: .75rem;
-      font-weight: 950;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-
-    .contact-form input,
-    .contact-form select,
-    .contact-form textarea {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,.14);
-      border-radius: 18px;
-      background: rgba(0,0,0,.36);
-      color: #fff;
-      padding: 14px 15px;
-      outline: 0;
-      font: inherit;
-      transition: border-color .18s ease, background .18s ease, transform .18s ease;
-    }
-
-    .contact-form input:focus,
-    .contact-form select:focus,
-    .contact-form textarea:focus {
-      border-color: rgba(255,255,255,.42);
-      background: rgba(255,255,255,.08);
-      transform: translateY(-1px);
-    }
-
-    .contact-form textarea {
-      min-height: 128px;
-      resize: vertical;
-    }
-
-    .contact-form button {
-      border: 0;
-      border-radius: 999px;
-      background: #fff;
-      color: #000;
-      padding: 15px 18px;
-      font-weight: 1000;
-      letter-spacing: .04em;
-      cursor: pointer;
-      transition: transform .2s ease;
-    }
-
-    .contact-form button:hover { transform: translateY(-3px); }
-
     .checkout-modal {
       position: fixed;
       inset: 0;
@@ -2185,43 +1893,6 @@
       .checkout-head, .checkout-body { padding-left: 16px; padding-right: 16px; }
       .mobile-nav { display: grid; grid-template-columns: repeat(5, 1fr); }
     }
-
-
-    @media (max-width: 680px) {
-      .quick-view-modal {
-        padding: 0;
-        place-items: stretch;
-      }
-      .quick-view-sheet {
-        width: 100%;
-        max-height: 100vh;
-        min-height: 100vh;
-        border-radius: 0;
-        border-left: 0;
-        border-right: 0;
-      }
-      .quick-view-photo-wrap {
-        min-height: 56vh;
-        border-radius: 24px;
-      }
-      .quick-view-head {
-        padding-top: 16px;
-      }
-      .quick-view-actions {
-        position: sticky;
-        bottom: 0;
-        padding: 12px 0 0;
-        background: linear-gradient(180deg, transparent, rgba(4,4,4,.95) 42%);
-      }
-      .contact-panel {
-        grid-template-columns: 1fr;
-        padding: 18px;
-      }
-      .contact-copy h3 {
-        font-size: clamp(2.4rem, 14vw, 4rem);
-      }
-    }
-
   </style>
 </head>
 <body>
@@ -2243,8 +1914,8 @@
         <nav class="nav-actions" aria-label="Primary navigation">
           <a class="pill" href="#shop">Shop</a>
           <a class="pill" href="#wash-dry-fold">Wash / Dry / Fold</a>
+          <a class="pill" href="#wash-lab">Wash Lab</a>
           <a class="pill" href="#returns">Final Sale</a>
-          <a class="pill" href="#contact">Contact</a>
           <button class="pill" id="modeToggle" type="button">Wash Mode</button>
           <button class="pill cart-pill" id="cartButton" type="button" aria-label="Open checkout cart">0</button>
         </nav>
@@ -2252,9 +1923,9 @@
 
       <section class="hero">
         <div class="hero-copy">
-     
+          <div class="eyebrow"><span class="pulse"></span> Mobile app energy for laundry-made products</div>
           <h1>Clean goods. Dirty ambition.</h1>
-          <p>SOAP MONEY combines the laundromat into a futuristic streetwear terminal. Load up heavyweight tees, trucker hats, the premium Laundry Card, and limited art driven drops like every purchase is a fresh cycle.</p>
+          <p>SOAP MONEY turns the laundromat into a futuristic streetwear terminal. Load up heavyweight tees, one-size trucker hats, the premium Laundry Card, and limited art-driven drops like every purchase is a fresh cycle.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#shop">Start The Drop</a>
             <button class="btn btn-secondary" type="button" data-open-checkout>Open Checkout</button>
@@ -2263,7 +1934,7 @@
           <div class="stats-strip" aria-label="Brand highlights">
             <div class="stat"><strong>300 GSM+</strong><span>Premium tee weight</span></div>
             <div class="stat"><strong>24/7</strong><span>Laundromat mood</span></div>
-            <div class="stat"><strong>SM</strong><span>In house details</span></div>
+            <div class="stat"><strong>SM</strong><span>In-house details</span></div>
           </div>
         </div>
 
@@ -2275,7 +1946,7 @@
                 <div class="washer-card">
                   <img src="assets/soap-money-wordmark.png" alt="SOAP MONEY wordmark logo">
                   <h2>Drop Cycle Active</h2>
-                  
+                  <p>Heavy black goods, white logo hits, clean packaging, and premium in-house customization.</p>
                   <div class="progress-shell"><div class="progress-bar"></div></div>
                 </div>
                 <div class="quick-cycles">
@@ -2308,7 +1979,7 @@
       <section id="wash-dry-fold" class="wash-flow-section reveal">
         <div class="section-head">
           <h2>Wash. Dry. Fold.</h2>
-         
+          <p>The full SOAP MONEY shopping path now moves like a laundromat cycle: pick the goods, lock the details, then open the checkout drawer with every item photo shown clean.</p>
         </div>
         <div class="wash-flow-grid" aria-label="Wash Dry Fold shopping flow">
           <article class="flow-card wash-step">
@@ -2399,12 +2070,44 @@
             <div class="product-visual product-photo"><img class="product-image" src="assets/product-trucker-cap.webp" alt="Soap Money Trucker Hat black trucker hat with white embroidered front logo"></div>
             <div class="product-badge-row"><small>Cycle 03</small><span class="wash-status">One Size</span></div>
             <h3>Soap Money Trucker Hat</h3>
-            <p>One-size adjustable black mesh trucker hat with a white embroidered Soap Money front hit and clean wash mood.</p>
+            <p>One-size adjustable black mesh trucker hat with a white embroidered Soap Money front hit and clean wash-uniform mood.</p>
             <div class="card-footer"><span class="price">$50</span><button class="add-btn" data-item="Soap Money Trucker Hat" data-price="50" data-default-image="assets/product-trucker-cap.webp">Add</button></div>
           </article>
         </div>
       </section>
 
+
+      <section id="wash-lab">
+        <div class="feature-band">
+          <div class="feature-card">
+            <h2>The wash lab</h2>
+            <p>The site is built to feel like customers are opening a SOAP MONEY app inside a premium laundromat. Every scroll moves through product cycles, limited drops, lockers, wash status, and checkout-ready CTAs.</p>
+            <div class="logo-wall"><img src="assets/soap-money-wordmark.png" alt="SOAP MONEY wordmark"></div>
+          </div>
+          <div class="locker-card">
+            <h2>Drop lockers</h2>
+            <p>Use these blocks for upcoming product categories, sold-out drops, bundles, collabs, or local pickup instructions.</p>
+            <div class="locker-grid">
+              <div class="locker"><strong>Locker A</strong><span>Heavyweight tees, folded clean, sized S - 2XL, ready for the next run.</span></div>
+              <div class="locker"><strong>Locker B</strong><span>Trucker caps, snapbacks, and stitch-friendly front logos.</span></div>
+              <div class="locker"><strong>Locker C</strong><span>Laundry cards, QR access, and packaging for premium product reveals.</span></div>
+              <div class="locker"><strong>Locker D</strong><span>Limited edition Soap Card drops, early access, and restock alerts.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-head">
+          <h2>Wash / Dry / Fold Flow</h2>
+          <p>A cleaner checkout path with the feeling of running a futuristic wash cycle.</p>
+        </div>
+        <div class="steps">
+          <article class="step"><div class="step-number">01</div><h3>Wash</h3><p>Select the product cycle: Soap Money Tees, Soap Card, the Soap Money Laundry Card, or the Soap Money Trucker Hat.</p></article>
+          <article class="step"><div class="step-number">02</div><h3>Dry</h3><p>Choose the right size, flip the front/back views, and listen for the dryer-style interaction cues.</p></article>
+          <article class="step"><div class="step-number">03</div><h3>Fold</h3><p>Open the popup checkout, confirm product photos and prices, then prepare the final-sale order flow.</p></article>
+        </div>
+      </section>
 
 
 
@@ -2417,7 +2120,7 @@
           <div class="returns-grid">
             <article class="policy-card">
               <strong>All purchases final</strong>
-              <p>SOAP MONEY products are made for limited drops and in house customization. Once an order is placed, the sale is final.</p>
+              <p>SOAP MONEY products are made for limited drops and in-house customization. Once an order is placed, the sale is final.</p>
             </article>
             <article class="policy-card">
               <strong>No returns</strong>
@@ -2431,57 +2134,11 @@
         </div>
       </section>
 
-
-      <section id="contact" class="reveal">
-        <div class="section-head">
-          <h2>Contact The Counter</h2>
-          <p>Questions about a drop, sizing, pickup, collabs, or bulk orders? Send it through the SOAP MONEY counter.</p>
-        </div>
-        <div class="contact-panel">
-          <div class="contact-copy">
-            <span class="contact-kicker">SOAP MONEY SERVICE WINDOW</span>
-            <h3>Tap in before the next cycle.</h3>
-            <p>Fill out our form with any questions or concerns. - Soap Money</p>
-            <div class="contact-chips" aria-label="Contact reasons">
-              <span>Product Questions</span>
-              <span>Bulk Orders</span>
-              <span>Collabs</span>
-              <span>Pickup Info</span>
-            </div>
-          </div>
-          <form class="contact-form" id="contactForm">
-            <label>
-              Name
-              <input type="text" name="name" placeholder="Your name" required>
-            </label>
-            <label>
-              Email
-              <input type="email" name="email" placeholder="email@domain.com" required>
-            </label>
-            <label>
-              Product Interest
-              <select name="product" aria-label="Product interest">
-                <option>Soap Money Tees</option>
-                <option>Soap Card Limited Edition</option>
-                <option>Soap Money Trucker Hat</option>
-                <option>Soap Money Laundry Card</option>
-                <option>Collab / Bulk Order</option>
-              </select>
-            </label>
-            <label>
-              Message
-              <textarea name="message" placeholder="Tell us what you need washed, dried, or folded..." required></textarea>
-            </label>
-            <button type="submit">Send Message</button>
-          </form>
-        </div>
-      </section>
-
       <section id="join" class="reveal">
         <div class="signup">
           <div>
             <h2>Get the next cycle.</h2>
-            <p>Collect emails here for early access, limited Soap Card drops, restocks, and future laundromat inspired goods.</p>
+            <p>Collect emails here for early access, limited Soap Card drops, restocks, and future laundromat-inspired goods.</p>
           </div>
           <form class="signup-form" id="signupForm">
             <input type="email" placeholder="email@soapmoney.co" aria-label="Email address" required>
@@ -2492,7 +2149,7 @@
 
       <footer>
         <div><img src="assets/soap-money-sm-logo.png" alt="SM logo"></div>
-        <div>Soap Money 2026, All Rights Reserved. | Powered by RoboTechi.</div>
+        <div>© 2026 SOAP MONEY. Future wash goods. Built for mobile-first drops.</div>
       </footer>
     </main>
   </div>
@@ -2501,35 +2158,11 @@
     <a href="#top"><i></i>Home</a>
     <a href="#shop"><i></i>Shop</a>
     <a href="#wash-dry-fold"><i></i>Flow</a>
-    <a href="#contact"><i></i>Contact</a>
+    <a href="#returns"><i></i>Final</a>
     <button type="button" id="mobileCart" aria-label="Open checkout cart"><i></i><span>Cart 0</span></button>
   </nav>
 
 
-
-
-  <div class="quick-view-modal" id="productQuickView" role="dialog" aria-modal="true" aria-labelledby="quickViewTitle" aria-hidden="true">
-    <div class="quick-view-sheet" role="document">
-      <div class="quick-view-head">
-        <span id="quickViewCycle">Product Preview</span>
-        <button class="quick-view-close" type="button" id="quickViewClose" aria-label="Close product preview">×</button>
-      </div>
-      <div class="quick-view-body">
-        <div class="quick-view-photo-wrap">
-          <img id="quickViewImage" src="assets/product-heavy-gsm-tee-front.webp" alt="SOAP MONEY product preview">
-        </div>
-        <div class="quick-view-info">
-          <div class="quick-view-meta"><span id="quickViewView">Front View</span><span>Tap product to inspect</span></div>
-          <h3 id="quickViewTitle">Soap Money Tees</h3>
-          <p id="quickViewDescription">Product details load here.</p>
-          <div class="quick-view-actions">
-            <strong id="quickViewPrice">$50</strong>
-            <button type="button" id="quickViewAdd">Add To Checkout</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <div class="checkout-modal" id="checkoutModal" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle" aria-hidden="true">
     <div class="checkout-sheet" role="document">
@@ -2577,16 +2210,6 @@
     const emptyCheckout = document.getElementById('emptyCheckout');
     const clearCart = document.getElementById('clearCart');
     const checkoutPay = document.getElementById('checkoutPay');
-    const productQuickView = document.getElementById('productQuickView');
-    const quickViewClose = document.getElementById('quickViewClose');
-    const quickViewImage = document.getElementById('quickViewImage');
-    const quickViewTitle = document.getElementById('quickViewTitle');
-    const quickViewDescription = document.getElementById('quickViewDescription');
-    const quickViewPrice = document.getElementById('quickViewPrice');
-    const quickViewView = document.getElementById('quickViewView');
-    const quickViewCycle = document.getElementById('quickViewCycle');
-    const quickViewAdd = document.getElementById('quickViewAdd');
-    let activeQuickViewCard = null;
     let cartCount = 0;
     let cartItems = [];
     let mode = 'Wash Mode';
@@ -2737,53 +2360,6 @@
       playLaundrySound('washer');
     }
 
-
-
-    function getProductPreviewData(card) {
-      const image = card.querySelector('.product-image');
-      const title = card.querySelector('h3')?.textContent?.trim() || 'SOAP MONEY Product';
-      const description = card.querySelector('p')?.textContent?.trim() || 'SOAP MONEY product preview.';
-      const price = card.querySelector('.price')?.textContent?.trim() || '$0';
-      const view = card.querySelector('.view-label')?.textContent?.trim() || card.querySelector('.wash-status')?.textContent?.trim() || 'Product View';
-      const cycle = card.querySelector('small')?.textContent?.trim() || 'Product Preview';
-      return {
-        title,
-        description,
-        price,
-        view,
-        cycle,
-        image: image?.getAttribute('src') || 'assets/soap-money-wordmark.png',
-        alt: image?.getAttribute('alt') || `${title} product preview`
-      };
-    }
-
-    function openProductQuickView(card) {
-      activeQuickViewCard = card;
-      const data = getProductPreviewData(card);
-      quickViewImage.src = data.image;
-      quickViewImage.alt = data.alt;
-      quickViewTitle.textContent = data.title;
-      quickViewDescription.textContent = data.description;
-      quickViewPrice.textContent = data.price;
-      quickViewView.textContent = data.view;
-      quickViewCycle.textContent = data.cycle;
-      productQuickView.classList.add('open');
-      productQuickView.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-      playLaundrySound('dryer');
-    }
-
-    function closeProductQuickView() {
-      productQuickView.classList.remove('open');
-      productQuickView.setAttribute('aria-hidden', 'true');
-      document.body.style.overflow = checkoutModal.classList.contains('open') ? 'hidden' : '';
-      playLaundrySound('washer');
-    }
-
-    function isInteractiveProductClick(target) {
-      return Boolean(target.closest('button, a, input, select, textarea, .product-switcher, .size-options'));
-    }
-
     document.querySelectorAll('[data-open-checkout]').forEach(button => {
       button.addEventListener('click', openCheckout);
     });
@@ -2794,7 +2370,6 @@
       if (event.target === checkoutModal) closeCheckout();
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && productQuickView.classList.contains('open')) closeProductQuickView();
       if (event.key === 'Escape' && checkoutModal.classList.contains('open')) closeCheckout();
     });
 
@@ -2821,25 +2396,6 @@
     checkoutPay.addEventListener('click', () => {
       playLaundrySound('dryer');
       showToast(cartItems.length ? 'Checkout flow ready to connect' : 'Add products before checkout');
-    });
-
-
-
-    quickViewClose.addEventListener('click', closeProductQuickView);
-    productQuickView.addEventListener('click', event => {
-      if (event.target === productQuickView) closeProductQuickView();
-    });
-    quickViewAdd.addEventListener('click', () => {
-      const addButton = activeQuickViewCard?.querySelector('.add-btn');
-      if (addButton) addButton.click();
-      closeProductQuickView();
-    });
-
-    document.querySelectorAll('[data-product-card]').forEach(card => {
-      card.addEventListener('click', event => {
-        if (isInteractiveProductClick(event.target)) return;
-        openProductQuickView(card);
-      });
     });
 
     document.querySelectorAll('.size-chip').forEach(button => {
@@ -2934,15 +2490,6 @@
       document.body.style.setProperty('--panel', mode === 'Shop Mode' ? 'rgba(255,255,255,.11)' : 'rgba(255,255,255,.075)');
       playLaundrySound(mode === 'Shop Mode' ? 'dryer' : 'washer');
       showToast(`${mode} activated`);
-    });
-
-
-
-    document.getElementById('contactForm').addEventListener('submit', event => {
-      event.preventDefault();
-      playLaundrySound('dryer');
-      showToast('Message sent to the SOAP MONEY counter');
-      event.currentTarget.reset();
     });
 
     document.getElementById('signupForm').addEventListener('submit', event => {
